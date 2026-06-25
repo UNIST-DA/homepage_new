@@ -1,0 +1,55 @@
+{
+  "order": 7,
+  "name": "Jihyun Ko",
+  "role": "M.S. Student",
+  "period": "2026.02 —",
+  "photo": "/assets/members/students/jihyun-ko.jpg",
+  "email": "kjh1337@unist.ac.kr",
+  "tags": [
+    "LLM for Time-Series Forecasting",
+    "Anomaly Detection",
+    "AI Agent"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Kjh1337"
+    },
+    {
+      "label": "CV",
+      "url": "https://typhoon-fuschia-c95.notion.site/b2a2b6a9b1f945baafa0db23df05d5e8"
+    }
+  ],
+  "about": "I am interested in LLM-based time-series forecasting and leveraging external domain knowledge to provide explainable predictions in complex manufacturing environments.",
+  "interests": [
+    "Alignment of cross-modality (Language & Time-series)",
+    "LLM-based time-series forecasting",
+    "Knowledge-infused predictive modeling",
+    "Foundation model adaptation for time series"
+  ],
+  "milestones": [
+    {
+      "start": "2026.02",
+      "title": "M.S. in Industrial Engineering",
+      "note": "UNIST"
+    },
+    {
+      "start": "2025.08",
+      "end": "2026.02",
+      "title": "Research Intern, Data Analytics Lab",
+      "note": "LLM-based time-series anomaly detection & agent modeling"
+    },
+    {
+      "start": "2025.02",
+      "end": "2025.07",
+      "title": "COOP, INEEJI",
+      "note": "Nitrogen gas demand forecasting & AI monitoring dashboard"
+    },
+    {
+      "start": "2020.02",
+      "end": "2026.02",
+      "title": "B.S. in Industrial Engineering",
+      "note": "UNIST"
+    }
+  ]
+}

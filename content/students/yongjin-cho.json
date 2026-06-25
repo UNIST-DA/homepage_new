@@ -1,0 +1,46 @@
+{
+  "order": 8,
+  "name": "Yongjin Cho",
+  "role": "M.S. Student",
+  "period": "2026.02 —",
+  "photo": "/assets/members/students/yongjin-cho.jpg",
+  "email": "whdydwls66@unist.ac.kr",
+  "tags": [
+    "Exploring research interests"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/Yong1647"
+    }
+  ],
+  "about": "I am currently exploring various fields to narrow down my research interests.",
+  "interests": [
+    "Exploring research interests"
+  ],
+  "milestones": [
+    {
+      "start": "2026.02",
+      "title": "M.S. in Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2025.07",
+      "end": "2025.08",
+      "title": "Research Intern, KAIST",
+      "note": "CMU-VLA Challenge"
+    },
+    {
+      "start": "2024.08",
+      "end": "2025.02",
+      "title": "COOP, INTERX",
+      "note": "Defect detection for semiconductor PCB; fall-detection PoC"
+    },
+    {
+      "start": "2019.02",
+      "end": "2026.02",
+      "title": "B.S. in Industrial Engineering & CSE",
+      "note": "UNIST"
+    }
+  ]
+}

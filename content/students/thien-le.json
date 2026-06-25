@@ -1,0 +1,50 @@
+{
+  "order": 3,
+  "name": "Thien Le",
+  "role": "Ph.D. Student",
+  "period": "2026.03 —",
+  "photo": "/assets/members/students/thien-le.jpg",
+  "email": "thienlb@unist.ac.kr",
+  "tags": [
+    "Data Analytics",
+    "Business Intelligence",
+    "Data Architecture",
+    "Machine Learning"
+  ],
+  "links": [
+    {
+      "label": "Scholar",
+      "url": "https://scholar.google.com/citations?user=EeuAZ-IAAAAJ&hl=en"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/thienleba"
+    }
+  ],
+  "about": "I am a Ph.D. student at UNIST under Professor Sungil Kim. My research integrates Lean Thinking, Six Sigma and Data Architecture to design decentralized, scalable, value-driven data ecosystems — bridging operational excellence with distributed data ownership to improve data quality and decision-making.",
+  "interests": [
+    "Business Intelligence strategy & KPI-driven performance management",
+    "Advanced analytics for financial, operational & risk decisions",
+    "Enterprise data architecture & decentralized governance",
+    "Data modeling & ML for data-driven decision-making"
+  ],
+  "milestones": [
+    {
+      "start": "2026.03",
+      "title": "Ph.D. Student, Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2020.12",
+      "end": "2023.05",
+      "title": "M.Sc. in Information Systems",
+      "note": "University of Information Technology, VNUHCM"
+    },
+    {
+      "start": "2015.09",
+      "end": "2019.07",
+      "title": "B.S. in Management Information Systems",
+      "note": "University of Economics and Law, VNUHCM"
+    }
+  ]
+}

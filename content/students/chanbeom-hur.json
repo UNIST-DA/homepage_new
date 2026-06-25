@@ -1,0 +1,58 @@
+{
+  "order": 4,
+  "name": "Chanbeom Hur",
+  "role": "M.S. Student",
+  "period": "2025.03 —",
+  "photo": "/assets/members/students/chanbeom-hur.jpg",
+  "email": "chanbeom.hur@gmail.com",
+  "tags": [
+    "Statistical Machine Learning",
+    "Survival Analysis",
+    "Applied Data Science"
+  ],
+  "links": [
+    {
+      "label": "Scholar",
+      "url": "https://scholar.google.com/citations?user=R2oYGIUAAAAJ&hl=ko"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/chanbeomhur"
+    },
+    {
+      "label": "CV",
+      "url": "https://github.com/chanbeomhur/cv/releases/latest/download/CV_ChanbeomHur.pdf"
+    }
+  ],
+  "about": "My interests lie at the intersection of statistics and machine learning. I am particularly interested in applying statistical principles to deep learning models to uncover latent structures and patterns within empirical data.",
+  "interests": [
+    "Statistical Machine Learning",
+    "Survival Analysis",
+    "Applied Data Science"
+  ],
+  "milestones": [
+    {
+      "start": "2025.10",
+      "end": "2026.08",
+      "title": "Visiting Researcher, Georgia Institute of Technology",
+      "note": "Advised by Prof. Kamran Paynabar (ISyE)"
+    },
+    {
+      "start": "2025.07",
+      "end": "2025.08",
+      "title": "AI Consultant, Rinno Aluminum Co., Ltd.",
+      "note": "Process optimization with LightGBM & SHAP"
+    },
+    {
+      "start": "2025.03",
+      "title": "M.S. in Industrial Engineering",
+      "note": "UNIST"
+    },
+    {
+      "start": "2019.02",
+      "end": "2025.02",
+      "title": "B.S. in Industrial Engineering",
+      "note": "UNIST"
+    }
+  ]
+}

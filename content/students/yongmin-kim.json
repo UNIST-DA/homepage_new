@@ -1,0 +1,43 @@
+{
+  "order": 1,
+  "name": "Yongmin Kim",
+  "role": "Combined M.S.–Ph.D.",
+  "period": "2024.09 —",
+  "photo": "/assets/members/students/yongmin-kim.jpg",
+  "email": "kyoungm0709@unist.ac.kr",
+  "tags": [
+    "Anomaly Detection",
+    "Time-Series Data",
+    "Meta-Learning"
+  ],
+  "links": [],
+  "about": "I'm an M.S./Ph.D. combined student at UNIST researching mechanism-aware anomaly detection on irregular time series via behavior cloning and meta-learning, with a focus on context/constraint-aware, real-world systems.",
+  "interests": [
+    "Irregularly sampled time-series data analysis",
+    "Time-series anomaly detection (context/constraint-aware)",
+    "Mechanism-based detection via behavior cloning",
+    "Meta-learning for rapid cross-domain adaptation"
+  ],
+  "current": [
+    "Anomaly detection on AIS data using policy extraction"
+  ],
+  "milestones": [
+    {
+      "start": "2024.09",
+      "title": "M.S./Ph.D. Combined, Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2023.06",
+      "end": "2024.08",
+      "title": "Undergraduate Intern",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2021.03",
+      "end": "2024.08",
+      "title": "B.S. in Industrial Engineering",
+      "note": "UNIST"
+    }
+  ]
+}

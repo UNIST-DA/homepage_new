@@ -1,0 +1,49 @@
+{
+  "order": 5,
+  "name": "Sieun Lee",
+  "role": "M.S. Student",
+  "period": "2025.09 —",
+  "photo": "/assets/members/students/sieun-lee.jpg",
+  "email": "sieun5548@unist.ac.kr",
+  "tags": [
+    "Missingness Mechanisms",
+    "Time-Series Imputation",
+    "Diffusion Models"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sieun-00"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/sieun-lee-5ba02b345/"
+    }
+  ],
+  "about": "I'm interested in missingness-aware time-series modeling (imputation, diffusion, downstream) across manufacturing and healthcare, as well as AI industry–academia projects and new model development.",
+  "interests": [
+    "Missingness analysis in sensor/clinical data",
+    "Time-series imputation (predictive, generative, diffusion)",
+    "Anomaly detection & reliability analytics",
+    "AI industry–academia collaboration"
+  ],
+  "milestones": [
+    {
+      "start": "2025.09",
+      "title": "M.S. in Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2024.12",
+      "end": "2025.08",
+      "title": "Research Intern, Data Analytics Lab",
+      "note": "Time-series imputation/diffusion baselines"
+    },
+    {
+      "start": "2019.02",
+      "end": "2024.08",
+      "title": "B.S. in Industrial Engineering",
+      "note": "UNIST"
+    }
+  ]
+}

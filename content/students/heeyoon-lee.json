@@ -1,0 +1,42 @@
+{
+  "order": 6,
+  "name": "Heeyoon Lee",
+  "role": "M.S. Student",
+  "period": "2025.09 —",
+  "photo": "/assets/members/students/heeyoon_revised.jpg",
+  "email": "heeyoonrobot@unist.ac.kr",
+  "tags": [
+    "Time-Series Imputation",
+    "Missing Data",
+    "Deep Learning"
+  ],
+  "links": [],
+  "about": "I'm interested in data imputation and statistical analysis on missing data.",
+  "interests": [
+    "Statistical analysis with missing data",
+    "Deep learning",
+    "Healthcare data imputation"
+  ],
+  "current": [
+    "IITP project on Biosignal Foundation Model"
+  ],
+  "milestones": [
+    {
+      "start": "2025.09",
+      "title": "M.S. in Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2024.11",
+      "end": "2025.09",
+      "title": "Research Intern",
+      "note": "Data Analytics Lab (UNIST)"
+    },
+    {
+      "start": "2020.03",
+      "end": "2025.08",
+      "title": "B.S. in Industrial Engineering",
+      "note": "UNIST"
+    }
+  ]
+}

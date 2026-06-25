@@ -1,0 +1,59 @@
+{
+  "order": 0,
+  "name": "SeungSu Kam",
+  "role": "Combined M.S.–Ph.D.",
+  "period": "2022.02 —",
+  "photo": "/assets/members/students/seungsu-kam.jpg",
+  "email": "lewki83@unist.ac.kr",
+  "tags": [
+    "Irregularly Sampled Time Series",
+    "Neural Differential Equations",
+    "Anomaly Detection",
+    "Survival Analysis"
+  ],
+  "links": [
+    {
+      "label": "Scholar",
+      "url": "https://scholar.google.co.kr/citations?hl=ko&user=yP1DmawAAAAJ"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/SEUNGSUKAM"
+    },
+    {
+      "label": "Homepage",
+      "url": "https://seungsukam.github.io/"
+    }
+  ],
+  "about": "I am a Ph.D. student in Industrial Engineering at UNIST under the supervision of Professor Sungil Kim. My work involves Neural Differential Equations, Conditional Density Estimation, and Survival Analysis, applied to real-time anomaly detection, astronomical anomaly detection, longitudinal patient outcome prediction, and personalized thyroid hormone dosage recommendation.",
+  "interests": [
+    "Irregularly sampled time series analysis",
+    "Time series anomaly detection & reliability analytics",
+    "Multi-risk longitudinal survival analysis in healthcare",
+    "Irregular astronomical time series anomaly detection"
+  ],
+  "current": [
+    "Real-Time Quasar Anomaly Detection",
+    "Irregular Astronomical Time Series Anomaly Detection",
+    "Longitudinal Multi-risk Survival Analysis",
+    "Thyroid Hormone Dosage Recommendation"
+  ],
+  "milestones": [
+    {
+      "start": "2024.06",
+      "title": "Ph.D. Candidate, Industrial Engineering",
+      "note": "Passed Qualifying Exam · UNIST"
+    },
+    {
+      "start": "2022.02",
+      "title": "M.S.–Ph.D. Combined, Industrial Engineering",
+      "note": "UNIST, Data Analytics Lab"
+    },
+    {
+      "start": "2015.02",
+      "end": "2022.02",
+      "title": "B.S. in Industrial Engineering",
+      "note": "Ajou University"
+    }
+  ]
+}

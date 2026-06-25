@@ -1,0 +1,106 @@
+{
+  "name": "Sungil Kim",
+  "nameKo": "김성일",
+  "photo": "/assets/members/professor/professor.webp",
+  "title": "Associate Professor, Department of Industrial Engineering",
+  "affiliations": [
+    {
+      "label": "Department of Industrial Engineering",
+      "url": "https://ie.unist.ac.kr/"
+    },
+    {
+      "label": "Graduate School of Artificial Intelligence",
+      "url": "https://aigs.unist.ac.kr/web/index.php"
+    },
+    {
+      "label": "UNIST",
+      "url": "https://unist-kor.unist.ac.kr/"
+    }
+  ],
+  "role": "Chair of Department (UNIST IE), 2024 — present",
+  "office": "Bldg. 112, Rm. 301-8",
+  "tel": "+82-52-217-3195",
+  "email": "sungil.kim@unist.ac.kr",
+  "links": [
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=BISaBGoAAAAJ&hl=ko"
+    },
+    {
+      "label": "CV",
+      "url": "/assets/members/professor/prof_cv.pdf"
+    }
+  ],
+  "bio": "Dr. Sungil Kim is an Associate Professor in the Department of Industrial Engineering at UNIST. He focuses on modern challenges in quality engineering in the era of AI — such as sensor drift, inefficient data representation, and class imbalance — leveraging sensor and real-time log data to deliver practical, field-ready solutions.",
+  "researchFields": [
+    "System Monitoring & Anomaly Detection",
+    "Sequential Learning",
+    "Neural Differential Equations",
+    "Uncertainty Quantification",
+    "AI in Quality Engineering"
+  ],
+  "researchTopics": [
+    "Industrial Statistics and Data Analytics",
+    "Quality Engineering and Management",
+    "Response Surface Methodology",
+    "Demand Forecasting",
+    "Machine Learning and Data Mining",
+    "Business Analytics"
+  ],
+  "employment": [
+    {
+      "time": "2024 —",
+      "title": "Chair of Department",
+      "sub": "Department of Industrial Engineering, UNIST"
+    },
+    {
+      "time": "2020 —",
+      "title": "Associate Professor",
+      "sub": "UNIST"
+    },
+    {
+      "time": "2016 — 2020",
+      "title": "Assistant Professor",
+      "sub": "UNIST"
+    },
+    {
+      "time": "2014 — 2016",
+      "title": "Senior Engineer",
+      "sub": "Samsung SDS"
+    },
+    {
+      "time": "2011 — 2013",
+      "title": "Consultant",
+      "sub": "Terra Technology"
+    }
+  ],
+  "education": [
+    {
+      "time": "2011",
+      "title": "Ph.D., Industrial & Systems Engineering",
+      "sub": "Georgia Institute of Technology"
+    },
+    {
+      "time": "2007",
+      "title": "M.S., Statistics",
+      "sub": "Georgia Institute of Technology"
+    },
+    {
+      "time": "2007",
+      "title": "M.S., Industrial & Systems Engineering",
+      "sub": "Georgia Institute of Technology"
+    },
+    {
+      "time": "2005",
+      "title": "B.Sc., Industrial Engineering",
+      "sub": "Yonsei University"
+    }
+  ],
+  "awards": [
+    "Area Editor (Statistics, Quality, Reliability & Maintenance), Computers & Industrial Engineering",
+    "Senior Member, INFORMS",
+    "2023 Excellence in Mentoring Award, College of Information and Biotechnology, UNIST",
+    "2021 IISE Best Paper Award, Logistics and Supply Chain Division",
+    "2019 IISE Best Paper Award, Quality Control & Reliability Engineering Division"
+  ]
+}
