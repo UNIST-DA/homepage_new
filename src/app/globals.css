@@ -87,7 +87,7 @@ html {
 /* Touch: native CSS snap (feels good with momentum). Desktop (fine pointer)
    uses the JS ScrollDeck instead, so disable CSS snap there to avoid conflict. */
 @media (pointer: coarse) {
-  html { scroll-snap-type: y mandatory; }
+  html[data-deck] { scroll-snap-type: y mandatory; } /* home deck only — other pages scroll freely */
 }
 body {
   margin: 0;

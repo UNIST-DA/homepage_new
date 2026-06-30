@@ -8,9 +8,13 @@ import { useEffect } from "react";
 // good there); CSS snap is disabled for fine pointers so the two don't fight.
 export function ScrollDeck() {
   useEffect(() => {
+    // mark the home page so CSS scroll-snap (touch) applies here only
+    const html = document.documentElement;
+    html.setAttribute("data-deck", "");
+
     const fine = window.matchMedia("(pointer: fine)").matches;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce) return;
+    if (!fine || reduce) return () => html.removeAttribute("data-deck");
 
     let targets: number[] = [];
     const collect = () => {
@@ -64,6 +68,7 @@ export function ScrollDeck() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", collect);
       clearTimeout(timer);
+      html.removeAttribute("data-deck");
     };
   }, []);
 
