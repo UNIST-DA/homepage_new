@@ -660,13 +660,13 @@ strong { font-weight: 600; }
 /* slot-rotating accent word */
 .rot {
   display: inline-block;
-  height: 1.2em;
+  height: 1.4em;
   overflow: hidden;
   vertical-align: top;
   color: var(--blue);
 }
 .rot__list { display: flex; flex-direction: column; transition: transform 0.62s cubic-bezier(0.76, 0, 0.24, 1); }
-.rot__item { height: 1.2em; line-height: 1.2; }
+.rot__item { height: 1.4em; line-height: 1.4; }
 
 .hero__lead {
   margin: clamp(28px, 3.5vw, 44px) 0 0;
