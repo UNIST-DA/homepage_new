@@ -620,6 +620,12 @@ strong { font-weight: 600; }
 [data-theme="dark"] .intro__title { color: #ffffff; }
 [data-theme="dark"] .intro__kicker { color: #7aa2ff; }
 .intro-spacer { height: 100vh; }
+/* Mobile: drop the fixed overlay + spacer; intro is a normal section that
+   scrolls naturally (the JS fade/snap is disabled to match). */
+@media (max-width: 768px) {
+  .intro { position: relative; inset: auto; height: 100svh; opacity: 1; }
+  .intro-spacer { display: none; }
+}
 
 /* =========================================================
    Hero (full-screen, centered)

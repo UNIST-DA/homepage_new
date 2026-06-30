@@ -178,11 +178,17 @@ export function HomeMorph() {
     const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
     const onTouchMove = (e: TouchEvent) => { if (touchY - e.touches[0].clientY > 10) snap(); };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("wheel", onWheel, { passive: true });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    // Mobile: the intro is a normal in-flow section (see CSS) and just scrolls
+    // away naturally — the fixed-overlay fade + JS snap is janky on touch
+    // (viewport-toolbar resize + momentum fighting the programmatic scroll).
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) {
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", onWheel, { passive: true });
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+    }
     window.addEventListener("resize", build);
 
     return () => {
