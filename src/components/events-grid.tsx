@@ -1,0 +1,48 @@
+"use client";
+
+import { useState } from "react";
+import { asset } from "@/lib/asset";
+import type { EventItem } from "@/data/activity";
+
+const LIMIT = 6;
+
+const fmt = (iso: string) =>
+  new Date(iso + "T00:00:00").toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+export function EventsGrid({ events }: { events: EventItem[] }) {
+  const [showAll, setShowAll] = useState(false);
+  const shown = showAll ? events : events.slice(0, LIMIT);
+
+  return (
+    <>
+      <div className="events">
+        {shown.map((e) => (
+          <div key={e.date + e.title} className="event">
+            {e.image && (
+              <div className="event__media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset(e.image)} alt={e.title} loading="lazy" />
+              </div>
+            )}
+            <div className="event__body">
+              <span className="event__date">{fmt(e.date)}</span>
+              <div className="event__title">{e.title}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {events.length > LIMIT && (
+        <div className="more-wrap">
+          <button className="more-btn" onClick={() => setShowAll((v) => !v)}>
+            {showAll ? "접기" : `전체 보기 (${events.length})`}
+          </button>
+        </div>
+      )}
+    </>
+  );
+}

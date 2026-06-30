@@ -17,13 +17,18 @@ function Badge({ c }: { c: SeminarItem["category"] }) {
   return <span className={`sem-badge ${c === "Paper Review" ? "sem-badge--review" : ""}`}>{c}</span>;
 }
 
+const LIMIT = 9;
+
 export function SeminarList() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [showAll, setShowAll] = useState(false);
   const featured = seminars[0];
   const list = useMemo(
     () => (filter === "all" ? seminars : seminars.filter((s) => s.category === filter)),
     [filter],
   );
+  const shown = showAll ? list : list.slice(0, LIMIT);
+  const pick = (key: Filter) => { setFilter(key); setShowAll(false); };
 
   return (
     <div>
@@ -44,7 +49,7 @@ export function SeminarList() {
       {/* tabs */}
       <div className="tabs" style={{ marginTop: 36 }}>
         {TABS.map((t) => (
-          <button key={t.key} className={`tab ${filter === t.key ? "is-active" : ""}`} onClick={() => setFilter(t.key)}>
+          <button key={t.key} className={`tab ${filter === t.key ? "is-active" : ""}`} onClick={() => pick(t.key)}>
             {t.label}
           </button>
         ))}
@@ -52,7 +57,7 @@ export function SeminarList() {
 
       {/* grid */}
       <div className="sem-grid">
-        {list.map((s) => (
+        {shown.map((s) => (
           <a key={s.date + s.title} href={s.url} target="_blank" rel="noopener noreferrer" className="sem-card glow">
             <div className="sem-top">
               <Badge c={s.category} />
@@ -66,6 +71,14 @@ export function SeminarList() {
           </a>
         ))}
       </div>
+
+      {list.length > LIMIT && (
+        <div className="more-wrap">
+          <button className="more-btn" onClick={() => setShowAll((v) => !v)}>
+            {showAll ? "접기" : `전체 보기 (${list.length})`}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

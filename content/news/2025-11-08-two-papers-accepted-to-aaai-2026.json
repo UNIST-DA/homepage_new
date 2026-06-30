@@ -1,5 +1,6 @@
 {
   "date": "2025-11-08",
   "title": "Two papers accepted to AAAI 2026",
-  "tag": "Paper"
+  "tag": "Paper",
+  "detail": "Two papers have been accepted to AAAI 2026:\n1. \"Continuum Dropout for Neural Differential Equations\" by Jonghun Lee, YongKyung Oh, Sungil Kim, Dongyoung Lim\n2. \"FlowPath: Learning Data-Driven Manifolds with Invertible Flows for Robust Irregularly-sampled Time Series Classification\" by YongKyung Oh, Dongyoung Lim, Sungil Kim"
 }

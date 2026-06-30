@@ -620,6 +620,24 @@ strong { font-weight: 600; }
 [data-theme="dark"] .intro__title { color: #ffffff; }
 [data-theme="dark"] .intro__kicker { color: #7aa2ff; }
 .intro-spacer { height: 100vh; }
+
+/* "show all / collapse" control for long lists (seminars, events) */
+.more-wrap { text-align: center; margin-top: 36px; }
+.more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+.more-btn:hover { background: var(--layer); border-color: var(--text); color: var(--blue); }
 /* Mobile: drop the fixed overlay + spacer; intro is a normal section that
    scrolls naturally (the JS fade/snap is disabled to match). */
 @media (max-width: 768px) {

@@ -2,21 +2,14 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SeminarList } from "@/components/seminar-list";
+import { EventsGrid } from "@/components/events-grid";
 import { events } from "@/data/activity";
 import { news } from "@/data/news";
-import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Activity",
   description: "Data Analytics Lab activity — news, events, and the weekly seminar series.",
 };
-
-const fmt = (iso: string) =>
-  new Date(iso + "T00:00:00").toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
 
 const md = (iso: string) => {
   const d = new Date(iso + "T00:00:00");
@@ -75,21 +68,8 @@ export default function ActivityPage() {
             <span className="section-index">02</span>
             <h2 className="section-title">Events</h2>
           </Reveal>
-          <Reveal className="events">
-            {events.map((e) => (
-              <div key={e.date + e.title} className="event">
-                {e.image && (
-                  <div className="event__media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={asset(e.image)} alt={e.title} loading="lazy" />
-                  </div>
-                )}
-                <div className="event__body">
-                  <span className="event__date">{fmt(e.date)}</span>
-                  <div className="event__title">{e.title}</div>
-                </div>
-              </div>
-            ))}
+          <Reveal>
+            <EventsGrid events={events} />
           </Reveal>
         </div>
       </section>
