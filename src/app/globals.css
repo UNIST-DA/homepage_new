@@ -84,6 +84,11 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 16px);
 }
+/* Touch: native CSS snap (feels good with momentum). Desktop (fine pointer)
+   uses the JS ScrollDeck instead, so disable CSS snap there to avoid conflict. */
+@media (pointer: coarse) {
+  html { scroll-snap-type: y mandatory; }
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -535,11 +540,12 @@ strong { font-weight: 600; }
    Morph intro (noise → "DATA ANALYTICS LAB")
    ========================================================= */
 .intro {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
+  position: relative;
+  height: calc(100svh - var(--header-h)); /* fit below the sticky header */
+  overflow: hidden;
   background: #0a0b0e;
-  will-change: opacity;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 .intro__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .intro__label {
@@ -619,7 +625,13 @@ strong { font-weight: 600; }
 [data-theme="light"] .intro__tag { color: rgba(22, 22, 26, 0.62); }
 [data-theme="dark"] .intro__title { color: #ffffff; }
 [data-theme="dark"] .intro__kicker { color: #7aa2ff; }
-.intro-spacer { height: 100vh; }
+
+/* publications console — auto-cycling query */
+.pubsearch__q { display: inline-flex; align-items: center; font-size: clamp(15px, 1.6vw, 18px); color: var(--text); }
+.pubsearch__caret { display: inline-block; width: 2px; height: 1.1em; margin-left: 3px; background: var(--blue); animation: caret-blink 1s steps(1) infinite; }
+@keyframes caret-blink { 50% { opacity: 0; } }
+.pubsearch__fade { animation: pub-fade 0.5s var(--ease) both; }
+@keyframes pub-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* "show all / collapse" control for long lists (seminars, events) */
 .more-wrap { text-align: center; margin-top: 36px; }
@@ -638,22 +650,92 @@ strong { font-weight: 600; }
   transition: background 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
 }
 .more-btn:hover { background: var(--layer); border-color: var(--text); color: var(--blue); }
-/* Mobile: drop the fixed overlay + spacer; intro is a normal section that
-   scrolls naturally (the JS fade/snap is disabled to match). */
-@media (max-width: 768px) {
-  .intro { position: relative; inset: auto; height: 100svh; opacity: 1; }
-  .intro-spacer { display: none; }
+
+/* publications search (home Research section) */
+.pubsearch { width: 100%; }
+.pubsearch__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  transition: border-color 0.15s var(--ease);
 }
+.pubsearch__bar:focus-within { border-color: var(--blue); }
+.pubsearch__bar svg { width: 20px; height: 20px; color: var(--text-helper); flex: none; }
+.pubsearch__bar input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-family: var(--font-sans);
+  outline: none;
+}
+.pubsearch__clear {
+  flex: none;
+  border: 0;
+  background: var(--layer);
+  color: var(--text-secondary);
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.pubsearch__clear:hover { color: var(--text); }
+.pubsearch__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--text-helper);
+  margin: 16px 2px 8px;
+}
+.pubsearch__list { display: flex; flex-direction: column; max-height: 42vh; overflow-y: auto; }
+.pubsearch__empty { color: var(--text-helper); padding: 24px 2px; font-size: 15px; }
+.pubsearch__all {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--blue);
+}
+.pubsearch__all:hover { color: var(--blue-hover); }
 
 /* =========================================================
    Hero (full-screen, centered)
    ========================================================= */
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--header-h));
+  min-height: calc(100svh - var(--header-h)); /* fills the area below the header */
   display: flex;
   align-items: center;
-  padding-block: clamp(36px, 5vh, 72px);
+  padding-block: clamp(20px, 4vh, 44px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Full-screen home sections — each fills a viewport and snaps one at a time,
+   both directions. min-height so tall content can still scroll. */
+.section--full {
+  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(20px, 4vh, 44px);
+  border-top: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* final screen: Lab Life on top, footer pinned to the bottom */
+.section--life { justify-content: space-between; padding-bottom: 0; gap: clamp(20px, 3vh, 40px); }
+.section--life .site-footer { margin-top: 0; }
+.research__lead {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--text);
+  margin: 0 0 clamp(20px, 3vw, 32px);
 }
 .hero__copy { display: flex; flex-direction: column; width: 100%; }
 .hero__center {
@@ -694,10 +776,11 @@ strong { font-weight: 600; }
 
 .hero__lead {
   margin: clamp(28px, 3.5vw, 44px) 0 0;
-  max-width: 38em;
+  max-width: 34em;
   color: var(--text-secondary);
   font-size: clamp(17px, 1.7vw, 21px);
   line-height: 1.7;
+  text-wrap: balance; /* even line lengths — no lone trailing word */
 }
 .hero__cta { display: flex; gap: 0; flex-wrap: wrap; margin-top: 36px; }
 .hero__cta .btn { min-width: 196px; }
@@ -771,9 +854,6 @@ strong { font-weight: 600; }
 @keyframes cue { 0% { transform: translateY(-110%); } 100% { transform: translateY(260%); } }
 @media (max-width: 640px) { .scrollcue { display: none; } }
 
-@media (max-width: 920px) {
-  .hero { min-height: auto; }
-}
 
 /* =========================================================
    Lab Life — full-bleed horizontal photo band

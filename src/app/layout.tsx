@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans_KR, IBM_Plex_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ConditionalFooter } from "@/components/conditional-footer";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -47,7 +48,9 @@ export default function RootLayout({
       <body className={`${plex.variable} ${plexMono.variable}`}>
         <SiteHeader />
         <main>{children}</main>
-        <SiteFooter />
+        <ConditionalFooter>
+          <SiteFooter />
+        </ConditionalFooter>
       </body>
     </html>
   );

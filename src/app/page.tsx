@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { HomeMorph } from "@/components/home-morph";
+import { ScrollDeck } from "@/components/scroll-deck";
+import { ScrollCue } from "@/components/scroll-cue";
 import { Gallery } from "@/components/gallery";
+import { SiteFooter } from "@/components/site-footer";
 import { RotatingWord } from "@/components/rotating-word";
+import { PublicationsConsole } from "@/components/publications-console";
 import { interests, researchAreas } from "@/data/site";
-import { projects } from "@/data/projects";
 import { events, seminars } from "@/data/activity";
 import { news } from "@/data/news";
-import { asset } from "@/lib/asset";
 
 const fmtDate = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("ko-KR", {
@@ -19,6 +21,7 @@ const fmtDate = (iso: string) =>
 export default function Home() {
   return (
     <>
+      <ScrollDeck />
       {/* ===== Morph intro (first screen) ===== */}
       <HomeMorph />
 
@@ -40,8 +43,8 @@ export default function Home() {
             </span>
           </h1>
           <Reveal as="p" className="hero__lead" delay={0.5}>
-            산업 통계와 딥러닝/기계학습으로, 노이즈 속에서 신호·이상·구조를
-            찾아 신뢰할 수 있는 결정으로 만듭니다.
+            산업 통계와 딥러닝/기계학습으로, 노이즈 속에서<br />
+            신호·이상·구조를 찾아 신뢰할 수 있는 결정으로 만듭니다.
           </Reveal>
           <Reveal className="hero__cta" delay={0.58}>
             <Link href="/research/" className="btn btn-primary">
@@ -59,7 +62,7 @@ export default function Home() {
       </section>
 
       {/* ===== About ===== */}
-      <section id="about" className="section">
+      <section id="about" className="section section--full">
         <div className="container">
           <Reveal className="section-head">
             <span className="section-index">01</span>
@@ -114,10 +117,11 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
+        <ScrollCue />
       </section>
 
-      {/* ===== Research ===== */}
-      <section id="research" className="section">
+      {/* ===== Research (publications search) ===== */}
+      <section id="research" className="section section--full">
         <div className="container">
           <Reveal className="section-head">
             <span className="section-index">02</span>
@@ -127,31 +131,15 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <Reveal className="grid-3">
-            {projects.slice(0, 3).map((p) => (
-              <Link
-                key={p.slug}
-                href={`/research/${p.slug}/`}
-                className="glow proj"
-                style={{ background: "var(--bg)" }}
-              >
-                <div className="proj__media">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={asset(p.image)} alt={p.title} loading="lazy" />
-                </div>
-                <div className="proj__body">
-                  <span className="proj__period">{p.period}</span>
-                  <span className="proj__title">{p.title}</span>
-                  <span className="proj__summary">{p.summary}</span>
-                </div>
-              </Link>
-            ))}
+          <Reveal>
+            <PublicationsConsole />
           </Reveal>
         </div>
+        <ScrollCue />
       </section>
 
       {/* ===== Activity ===== */}
-      <section id="activity" className="section">
+      <section id="activity" className="section section--full">
         <div className="container">
           <Reveal className="section-head">
             <span className="section-index">03</span>
@@ -167,7 +155,7 @@ export default function Home() {
                 News <span className="act__tag">latest</span>
               </div>
               <ul className="act__list">
-                {news.slice(0, 5).map((n) => (
+                {news.slice(0, 4).map((n) => (
                   <li key={n.date + n.title} className="act__item">
                     <span className="act__date">{fmtDate(n.date)}</span>
                     <span className="act__title">{n.title}</span>
@@ -184,7 +172,7 @@ export default function Home() {
                 Events <span className="act__tag">recent</span>
               </div>
               <ul className="act__list">
-                {events.slice(0, 5).map((e) => (
+                {events.slice(0, 4).map((e) => (
                   <li key={e.date + e.title} className="act__item">
                     <span className="act__date">{fmtDate(e.date)}</span>
                     <span className="act__title">{e.title}</span>
@@ -201,7 +189,7 @@ export default function Home() {
                 Seminar <span className="act__tag">weekly</span>
               </div>
               <ul className="act__list">
-                {seminars.slice(0, 5).map((s) => (
+                {seminars.slice(0, 4).map((s) => (
                   <li key={s.date + s.title} className="act__item">
                     <span className="act__date">{fmtDate(s.date)}</span>
                     <span className="act__title">{s.title}</span>
@@ -214,10 +202,11 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
+        <ScrollCue />
       </section>
 
-      {/* ===== Lab Life ===== */}
-      <section id="life" className="section" style={{ paddingBottom: 0 }}>
+      {/* ===== Lab Life + footer (one final screen) ===== */}
+      <section id="life" className="section section--full section--life">
         <div className="container">
           <Reveal className="section-head">
             <span className="section-index">04</span>
@@ -227,6 +216,7 @@ export default function Home() {
         <Reveal>
           <Gallery />
         </Reveal>
+        <SiteFooter />
       </section>
     </>
   );

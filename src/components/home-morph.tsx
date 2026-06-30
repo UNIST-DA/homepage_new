@@ -4,21 +4,20 @@ import { useEffect, useRef, useState } from "react";
 
 // First screen — a statistical process control (SPC) chart draws live, an
 // out-of-limit point is caught as an anomaly, then the chart recedes and the
-// lab identity resolves in. One scroll fades the overlay and snaps to the site.
+// lab identity resolves in. It's a normal full-screen section; the page-wide
+// CSS scroll-snap carries the smooth one-screen-at-a-time transitions.
 const DRAW = 2800; // ms to draw the chart
 const RES = 1500; // ms to resolve into the wordmark
 
 type Pt = { x: number; y: number; anomaly: boolean };
 
 export function HomeMorph() {
-  const overlayRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
-    const overlay = overlayRef.current;
     const canvas = canvasRef.current;
-    if (!overlay || !canvas) return;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -50,7 +49,7 @@ export function HomeMorph() {
         const x = padX + (i / (N - 1)) * plotW;
         const anomaly = i === aIdx;
         const y = anomaly
-          ? ucl - H * 0.05 // breaches the upper control limit
+          ? ucl - H * 0.05
           : cy + (Math.random() - 0.5) * 2 * (limit * 0.62);
         pts.push({ x, y, anomaly });
       }
@@ -64,18 +63,17 @@ export function HomeMorph() {
 
     const render = (now: number) => {
       raf = requestAnimationFrame(render);
-      if (!pts[0]) return; // geometry not built yet — wait for the next frame
+      if (!pts[0]) return;
       const el = reduce ? DRAW + RES : now - t0;
-      const p1 = Math.min(1, el / DRAW); // draw progress
-      const p2 = Math.min(1, Math.max(0, (el - DRAW) / RES)); // resolve progress
-      const ca = 1 - 0.82 * easeOut(p2); // chart fades as the name resolves
+      const p1 = Math.min(1, el / DRAW);
+      const p2 = Math.min(1, Math.max(0, (el - DRAW) / RES));
+      const ca = 1 - 0.82 * easeOut(p2);
       const t = (now - t0) / 1000;
 
       if (!revealedFired && el >= DRAW) { revealedFired = true; setRevealed(true); }
 
       ctx.clearRect(0, 0, W, H);
 
-      // theme-aware palette (light = paper graph, dark = lit monitor)
       const light = document.documentElement.dataset.theme === "light";
       const inkP = light ? "26,26,34" : "232,238,255";
       const blueP = light ? "15,98,254" : "120,160,255";
@@ -86,7 +84,6 @@ export function HomeMorph() {
       const redC = light ? "218,30,40" : "255,77,77";
       const labC = light ? "22,22,22" : "255,255,255";
 
-      // faint grid
       ctx.strokeStyle = `rgba(${gridC},${(light ? 0.07 : 0.05) * ca})`;
       ctx.lineWidth = 1;
       ctx.beginPath();
@@ -94,7 +91,6 @@ export function HomeMorph() {
       ctx.stroke();
 
       const padX = W * 0.09;
-      // control limits + mean
       ctx.lineWidth = 1;
       ctx.setLineDash([5, 5]);
       ctx.strokeStyle = `rgba(${limC},${(light ? 0.28 : 0.2) * ca})`;
@@ -102,7 +98,6 @@ export function HomeMorph() {
       ctx.strokeStyle = `rgba(${meanC},${(light ? 0.5 : 0.35) * ca})`;
       ctx.beginPath(); ctx.moveTo(padX, cy); ctx.lineTo(W - padX, cy); ctx.stroke();
       ctx.setLineDash([]);
-      // limit labels
       ctx.font = '500 11px ui-monospace, "SF Mono", monospace';
       ctx.fillStyle = `rgba(${labC},${(light ? 0.55 : 0.42) * ca})`;
       ctx.textBaseline = "middle";
@@ -111,7 +106,6 @@ export function HomeMorph() {
       ctx.fillStyle = `rgba(${meanC},${0.7 * ca})`;
       ctx.fillText("μ", W - padX + 8, cy);
 
-      // progressive series line
       const rf = p1 * (pts.length - 1);
       const whole = Math.floor(rf);
       ctx.strokeStyle = `rgba(${lineC},${0.5 * ca})`;
@@ -126,13 +120,11 @@ export function HomeMorph() {
       }
       ctx.stroke();
 
-      // points
       for (let i = 0; i <= whole; i++) {
         const p = pts[i];
         if (p.anomaly) {
           ctx.fillStyle = `rgba(${redC},${ca})`;
           ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fill();
-          // reticle + expanding lock ring
           const lock = Math.min(1, (rf - aIdx) / 2);
           const rad = 11 + (1 - easeOut(lock)) * 16 + Math.sin(t * 4) * 1.5;
           ctx.strokeStyle = `rgba(${redC},${0.9 * ca * lock})`;
@@ -159,61 +151,23 @@ export function HomeMorph() {
     };
 
     let raf = requestAnimationFrame(render);
-
-    // scroll: fade overlay out; one scroll snaps to the site
-    let exited = false;
-    const onScroll = () => {
-      const f = Math.min(window.scrollY / (window.innerHeight * 0.8), 1);
-      overlay.style.opacity = String(1 - f);
-      overlay.style.pointerEvents = f > 0.96 ? "none" : "";
-      if (window.scrollY <= 1) exited = false;
-    };
-    const snap = () => {
-      if (exited || window.scrollY > window.innerHeight * 0.5) return;
-      exited = true;
-      window.scrollTo({ top: Math.round(window.innerHeight), behavior: "smooth" });
-    };
-    const onWheel = (e: WheelEvent) => { if (e.deltaY > 4) snap(); };
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
-    const onTouchMove = (e: TouchEvent) => { if (touchY - e.touches[0].clientY > 10) snap(); };
-
-    // Mobile: the intro is a normal in-flow section (see CSS) and just scrolls
-    // away naturally — the fixed-overlay fade + JS snap is janky on touch
-    // (viewport-toolbar resize + momentum fighting the programmatic scroll).
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (!isMobile) {
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("wheel", onWheel, { passive: true });
-      window.addEventListener("touchstart", onTouchStart, { passive: true });
-      window.addEventListener("touchmove", onTouchMove, { passive: true });
-    }
     window.addEventListener("resize", build);
-
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("resize", build);
     };
   }, []);
 
   return (
-    <>
-      <div className="intro" ref={overlayRef} aria-hidden>
-        <canvas ref={canvasRef} className="intro__canvas" />
-        <span className="intro__label">STATISTICAL PROCESS CONTROL · DA-LAB</span>
-        <div className={`intro__resolve ${revealed ? "is-on" : ""}`}>
-          <span className="intro__kicker">WELCOME TO</span>
-          <h1 className="intro__title">Data Analytics Lab</h1>
-          <p className="intro__tag">We find the signal in the noise.</p>
-        </div>
-        <div className="intro__cue">SCROLL</div>
+    <section className="intro" aria-label="Welcome to Data Analytics Lab">
+      <canvas ref={canvasRef} className="intro__canvas" />
+      <span className="intro__label">STATISTICAL PROCESS CONTROL · DA-LAB</span>
+      <div className={`intro__resolve ${revealed ? "is-on" : ""}`}>
+        <span className="intro__kicker">WELCOME TO</span>
+        <h1 className="intro__title">Data Analytics Lab</h1>
+        <p className="intro__tag">We find the signal in the noise.</p>
       </div>
-      <div className="intro-spacer" aria-hidden />
-    </>
+      <div className="intro__cue">SCROLL</div>
+    </section>
   );
 }
