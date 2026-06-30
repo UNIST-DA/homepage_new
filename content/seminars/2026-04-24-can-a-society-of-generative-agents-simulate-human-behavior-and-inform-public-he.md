@@ -7,4 +7,4 @@ url: https://www.notion.so/34c046396f7e8073a480e19fff727112
 keywords: LLM, Agent Based Modeling, Simulation
 ---
 
-해당 논문은 2025 COLM에 개제된 논문으로, Generative Agent Based Modeling(GABM)을 활용하여 Vaccine Hesitnacy라는 실제 현상을 시뮬레이션으로 재현하였습니다.
+해당 논문은 2025 COLM에 개제된 논문으로, Generative Agent Based Modeling(GABM)을 활용하여 Vaccine Hesitnacy라는 실제 정책을 시뮬레이션으로 재현하였습니다.
