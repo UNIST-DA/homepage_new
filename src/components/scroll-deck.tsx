@@ -37,6 +37,7 @@ export function ScrollDeck() {
     };
 
     const onWheel = (e: WheelEvent) => {
+      if (document.body.hasAttribute("data-modal")) return; // a modal owns scroll
       if (animating) { e.preventDefault(); return; }
       if (Math.abs(e.deltaY) < 4 || !targets.length) return;
       const y = window.scrollY;
@@ -50,7 +51,7 @@ export function ScrollDeck() {
     };
 
     const onKey = (e: KeyboardEvent) => {
-      if (animating || (e.target as HTMLElement)?.tagName === "INPUT") return;
+      if (animating || document.body.hasAttribute("data-modal") || (e.target as HTMLElement)?.tagName === "INPUT") return;
       if (["ArrowDown", "PageDown", " "].includes(e.key)) { if (move(1)) e.preventDefault(); }
       else if (["ArrowUp", "PageUp"].includes(e.key)) { if (move(-1)) e.preventDefault(); }
     };

@@ -8,7 +8,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { RotatingWord } from "@/components/rotating-word";
 import { PublicationsConsole } from "@/components/publications-console";
 import { interests, researchAreas } from "@/data/site";
-import { events, seminars } from "@/data/activity";
+import { events } from "@/data/activity";
+import { seminars } from "@/data/seminars";
 import { news } from "@/data/news";
 
 const fmtDate = (iso: string) =>
@@ -207,15 +208,17 @@ export default function Home() {
 
       {/* ===== Lab Life + footer (one final screen) ===== */}
       <section id="life" className="section section--full section--life">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="section-index">04</span>
-            <h2 className="section-title">Lab Life</h2>
+        <div className="life__main">
+          <div className="container">
+            <Reveal className="section-head">
+              <span className="section-index">04</span>
+              <h2 className="section-title">Lab Life</h2>
+            </Reveal>
+          </div>
+          <Reveal>
+            <Gallery />
           </Reveal>
         </div>
-        <Reveal>
-          <Gallery />
-        </Reveal>
         <SiteFooter />
       </section>
     </>

@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { seminars, type SeminarItem } from "@/data/activity";
+import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
+import type { SeminarItem } from "@/data/seminars";
 
 type Filter = "all" | "Lab Seminar" | "Paper Review";
 const TABS: { key: Filter; label: string }[] = [
@@ -9,6 +10,7 @@ const TABS: { key: Filter; label: string }[] = [
   { key: "Lab Seminar", label: "Lab Seminar" },
   { key: "Paper Review", label: "Paper Review" },
 ];
+const LIMIT = 9;
 
 const fmt = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "2-digit" });
@@ -17,34 +19,51 @@ function Badge({ c }: { c: SeminarItem["category"] }) {
   return <span className={`sem-badge ${c === "Paper Review" ? "sem-badge--review" : ""}`}>{c}</span>;
 }
 
-const LIMIT = 9;
-
-export function SeminarList() {
+export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
   const [filter, setFilter] = useState<Filter>("all");
   const [showAll, setShowAll] = useState(false);
+  const [open, setOpen] = useState<SeminarItem | null>(null);
+
   const featured = seminars[0];
   const list = useMemo(
     () => (filter === "all" ? seminars : seminars.filter((s) => s.category === filter)),
-    [filter],
+    [filter, seminars],
   );
   const shown = showAll ? list : list.slice(0, LIMIT);
   const pick = (key: Filter) => { setFilter(key); setShowAll(false); };
 
+  // open = a modal-like panel; lock the page + pause the scroll-deck while open
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
+    document.addEventListener("keydown", onKey);
+    document.body.setAttribute("data-modal", "");
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.removeAttribute("data-modal");
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  if (!featured) return null;
+
   return (
     <div>
       {/* featured latest */}
-      <a href={featured.url} target="_blank" rel="noopener noreferrer" className="sem-featured" style={{ display: "block" }}>
+      <button type="button" className="sem-featured" onClick={() => setOpen(featured)}>
         <div className="sem-top">
           <Badge c={featured.category} />
           <span className="sem-date">{fmt(featured.date)}</span>
           <span className="sem-featured__label">LATEST SEMINAR</span>
         </div>
         <div className="sem-featured__title">{featured.title}</div>
-        <div className="sem-featured__meta">Presented by {featured.presenter}</div>
+        {featured.presenter && <div className="sem-featured__meta">Presented by {featured.presenter}</div>}
         <div className="sem-kw-row">
           {featured.keywords.map((k) => <span key={k} className="sem-kw">{k}</span>)}
         </div>
-      </a>
+      </button>
 
       {/* tabs */}
       <div className="tabs" style={{ marginTop: 36 }}>
@@ -58,17 +77,17 @@ export function SeminarList() {
       {/* grid */}
       <div className="sem-grid">
         {shown.map((s) => (
-          <a key={s.date + s.title} href={s.url} target="_blank" rel="noopener noreferrer" className="sem-card glow">
+          <button type="button" key={s.slug} className="sem-card glow" onClick={() => setOpen(s)}>
             <div className="sem-top">
               <Badge c={s.category} />
               <span className="sem-date">{fmt(s.date)}</span>
             </div>
             <div className="sem-card__title">{s.title}</div>
-            <div className="sem-card__presenter">{s.presenter}</div>
+            {s.presenter && <div className="sem-card__presenter">{s.presenter}</div>}
             <div className="sem-card__kw">
               {s.keywords.slice(0, 3).map((k) => <span key={k} className="sem-kw">{k}</span>)}
             </div>
-          </a>
+          </button>
         ))}
       </div>
 
@@ -78,6 +97,42 @@ export function SeminarList() {
             {showAll ? "접기" : `전체 보기 (${list.length})`}
           </button>
         </div>
+      )}
+
+      {/* modal-like write-up panel — portal to <body> so a transformed
+          ancestor (Reveal) can't clip the fixed overlay */}
+      {open && createPortal(
+        <div className="sem-modal" role="dialog" aria-modal="true" onClick={() => setOpen(null)}>
+          <div className="sem-modal__panel" onClick={(e) => e.stopPropagation()}>
+            <button className="sem-modal__close" onClick={() => setOpen(null)} aria-label="닫기">✕</button>
+            <div className="sem-modal__head">
+              <div className="sem-top">
+                <Badge c={open.category} />
+                <span className="sem-date">{fmt(open.date)}</span>
+              </div>
+              <h3 className="sem-modal__title">{open.title}</h3>
+              {open.presenter && <div className="sem-modal__meta">Presented by {open.presenter}</div>}
+              {open.keywords.length > 0 && (
+                <div className="sem-kw-row">
+                  {open.keywords.map((k) => <span key={k} className="sem-kw">{k}</span>)}
+                </div>
+              )}
+            </div>
+            <div className="sem-modal__notes">
+              {open.notes ? (
+                <p className="sem-notes__body">{open.notes}</p>
+              ) : (
+                <p className="sem-notes__empty">아직 정리된 내용이 없습니다.</p>
+              )}
+            </div>
+            {open.url && (
+              <a href={open.url} target="_blank" rel="noopener noreferrer" className="sem-modal__link">
+                내부 노션에서 보기 <span aria-hidden>↗</span>
+              </a>
+            )}
+          </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
