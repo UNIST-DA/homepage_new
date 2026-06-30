@@ -1,0 +1,9 @@
+---
+date: 2025-12-08
+title: OIL-AD: An anomaly detection framework for decision-making sequences
+category: Lab Seminar
+presenter: Yongmin Kim
+url: https://www.notion.so/2bc046396f7e806dab28eb0090bf7390
+keywords: reinforcement learning, Time-series anomaly detection, UnsupervisedLearning
+---
+

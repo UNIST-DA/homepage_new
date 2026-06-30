@@ -1,0 +1,9 @@
+---
+date: 2026-03-27
+title: Deep Learning Longitudinal Survival Analysis with Competing Risk
+category: Lab Seminar
+presenter: SeungSu Kam
+url: https://www.notion.so/32f046396f7e80b6807fe5be4ea9f2d9
+keywords: Survival Analysis, Deep Learning, Irregular time series
+---
+

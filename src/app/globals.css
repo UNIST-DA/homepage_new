@@ -1478,7 +1478,7 @@ strong { font-weight: 600; }
 }
 .sem-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .sem-badge { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; padding: 4px 11px; background: var(--blue); color: #fff; }
-.sem-badge--review { background: var(--text); }
+.sem-badge--review { background: var(--text); color: var(--bg); }
 .sem-date { font-family: var(--font-mono); font-size: 13px; color: var(--text-helper); }
 .sem-featured__label { font-family: var(--font-mono); font-size: 11px; color: var(--text-helper); margin-left: auto; letter-spacing: 0.1em; }
 .sem-featured__title {

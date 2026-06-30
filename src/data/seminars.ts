@@ -1,7 +1,7 @@
-// Weekly seminars & paper reviews. Edited via the CMS / GitHub as per-file JSON
-// under web/content/seminars/. Researchers fill in `notes` to show a write-up
-// in the in-page toggle (so visitors without internal Notion access can read it).
-import { readJsonDir } from "@/lib/content";
+// Weekly seminars & paper reviews — one Markdown file each under
+// web/content/seminars/. Researchers just type the write-up below the `---`
+// frontmatter; it shows in the in-page modal (no internal Notion account needed).
+import { readMarkdownDir } from "@/lib/content";
 
 export type SeminarItem = {
   slug: string;
@@ -14,6 +14,8 @@ export type SeminarItem = {
   notes?: string;
 };
 
-export const seminars: SeminarItem[] = readJsonDir<Omit<SeminarItem, "slug">>("seminars")
-  .map(({ slug, data }) => ({ slug, ...data }))
+type SeminarMeta = Omit<SeminarItem, "slug" | "notes">;
+
+export const seminars: SeminarItem[] = readMarkdownDir<SeminarMeta>("seminars")
+  .map(({ slug, data, body }) => ({ ...data, slug, notes: body }))
   .sort((a, b) => b.date.localeCompare(a.date));

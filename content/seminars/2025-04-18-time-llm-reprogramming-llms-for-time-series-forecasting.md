@@ -1,0 +1,10 @@
+---
+date: 2025-04-18
+title: TIME-LLM: Reprogramming LLMs for Time Series
+Forecasting
+category: Paper Review
+presenter: Seongjin
+url: https://www.notion.so/1e3046396f7e8019a4a1c40e114c8cc5
+keywords: LLM, time series
+---
+

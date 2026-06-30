@@ -1,0 +1,10 @@
+---
+date: 2025-11-17
+title: Using Explainable Artificial Intelligence to Improve Process Quality:
+Evidence from Semiconductor Manufacturing (Management Science, 2022)
+category: Paper Review
+presenter: 유정우
+url: https://www.notion.so/2b5046396f7e80fba149cf48245431af
+keywords: Gradient Boost Tree, QualityMonitoring
+---
+

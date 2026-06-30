@@ -1,0 +1,9 @@
+---
+date: 2025-04-11
+title: MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation (CIKM 2024)
+category: Lab Seminar
+presenter: 이희윤
+url: https://www.notion.so/1d1046396f7e8080983acdd19473ea9c
+keywords: DeepLearning, time series, Diffusion Model
+---
+
