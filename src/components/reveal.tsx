@@ -32,6 +32,12 @@ export function Reveal({
       el.classList.add("is-in");
       return;
     }
+    // Already in view at load (tall content / short pages) → show immediately,
+    // instead of waiting for a scroll that may never hit the threshold.
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add("is-in");
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -41,7 +47,8 @@ export function Reveal({
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      // threshold 0 fires as soon as any part enters — reliable for tall elements
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
