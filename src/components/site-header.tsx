@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { nav, site } from "@/data/site";
 import { asset } from "@/lib/asset";
 
@@ -37,10 +37,35 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href !== "/" && pathname.startsWith(href.replace(/#.*$/, ""));
 
+  // Next.js makes a link to the current route a no-op. Give same-route clicks a
+  // behaviour: an in-page anchor (/activity/#seminar) scrolls to that section,
+  // a plain same-page link scrolls to the top, and the home logo refreshes.
+  const norm = (p: string) => p.replace(/\/+$/, "") || "/";
+  const onNavClick = (href: string) => (e: MouseEvent) => {
+    const i = href.indexOf("#");
+    const path = i >= 0 ? href.slice(0, i) : href;
+    const hash = i >= 0 ? href.slice(i + 1) : "";
+    if (norm(path) !== norm(pathname)) return; // different page → let Next navigate
+    e.preventDefault();
+    setOpen(false);
+    const el = hash ? document.getElementById(hash) : null;
+    if (el) {
+      const headerH = (document.querySelector(".site-header") as HTMLElement | null)?.offsetHeight ?? 0;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - headerH - 12, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+  const onLogoClick = (e: MouseEvent) => {
+    if (norm(pathname) !== "/") return;
+    e.preventDefault();
+    window.location.reload();
+  };
+
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="container site-header__bar">
-        <Link href="/" className="site-brand" aria-label={site.name}>
+        <Link href="/" className="site-brand" aria-label={site.name} onClick={onLogoClick}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset(site.logo)} alt="" className="site-brand__mark" />
           <span className="site-brand__text">
@@ -59,6 +84,7 @@ export function SiteHeader() {
                 <Link
                   href={item.href}
                   className={`site-nav__link ${isActive(item.href) ? "is-active" : ""}`}
+                  onClick={onNavClick(item.href)}
                 >
                   {item.label}
                   {item.children && <span className="site-nav__caret" aria-hidden>▾</span>}
@@ -67,7 +93,7 @@ export function SiteHeader() {
                   <ul className="site-nav__dd">
                     {item.children.map((c) => (
                       <li key={c.label}>
-                        <Link href={c.href}>{c.label}</Link>
+                        <Link href={c.href} onClick={onNavClick(c.href)}>{c.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -110,14 +136,14 @@ export function SiteHeader() {
         <ul>
           {nav.map((item) => (
             <li key={item.label}>
-              <Link href={item.href} className="site-mobile__link">
+              <Link href={item.href} className="site-mobile__link" onClick={onNavClick(item.href)}>
                 {item.label}
               </Link>
               {item.children && (
                 <ul className="site-mobile__sub">
                   {item.children.map((c) => (
                     <li key={c.label}>
-                      <Link href={c.href}>{c.label}</Link>
+                      <Link href={c.href} onClick={onNavClick(c.href)}>{c.label}</Link>
                     </li>
                   ))}
                 </ul>

@@ -6,8 +6,8 @@ import { ScrollCue } from "@/components/scroll-cue";
 import { Gallery } from "@/components/gallery";
 import { SiteFooter } from "@/components/site-footer";
 import { RotatingWord } from "@/components/rotating-word";
-import { PublicationsConsole } from "@/components/publications-console";
-import { interests, researchAreas } from "@/data/site";
+import { WorkPanels } from "@/components/work-panels";
+import { asset } from "@/lib/asset";
 import { events } from "@/data/activity";
 import { seminars } from "@/data/seminars";
 import { news } from "@/data/news";
@@ -20,6 +20,41 @@ const fmtDate = (iso: string) =>
   });
 
 export default function Home() {
+  // Activity screen — the lab's current pulse (message "C"): the weekly seminar
+  // as the research rhythm, plus a recent stream of news/events for momentum.
+  const latest = <T extends { date: string }>(arr: T[], n: number) =>
+    [...arr].sort((a, b) => b.date.localeCompare(a.date)).slice(0, n);
+  const featuredSeminar = latest(seminars, 1)[0];
+  const recent = [
+    ...latest(news, 4).map((n) => ({ kind: "News", date: n.date, title: n.title, href: "/activity/#news" })),
+    ...latest(events, 3).map((e) => ({ kind: "Event", date: e.date, title: e.title, href: "/activity/#events" })),
+    ...latest(seminars, 4)
+      .filter((s) => s.slug !== featuredSeminar?.slug)
+      .map((s) => ({ kind: "Seminar", date: s.date, title: s.title, href: "/activity/#seminar" })),
+  ]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 7);
+
+  // Research map — Industrial AI branches into three domain pillars, each with
+  // a representative image and two keyword areas.
+  const focusAreas = [
+    {
+      title: "Manufacturing AI",
+      keywords: ["Quality Engineering", "Time Series Analysis"],
+      image: "/assets/about/ManufacturingAI.png",
+    },
+    {
+      title: "Healthcare AI",
+      keywords: ["Survival Analysis", "Multimodal AI"],
+      image: "/assets/about/healthcareAI.png",
+    },
+    {
+      title: "Service AI",
+      keywords: ["Agentic AI", "Recommendation System"],
+      image: "/assets/about/serviceAI.png",
+    },
+  ];
+
   return (
     <>
       <ScrollDeck />
@@ -44,7 +79,7 @@ export default function Home() {
             </span>
           </h1>
           <Reveal as="p" className="hero__lead" delay={0.5}>
-            산업 통계와 딥러닝/기계학습으로, 노이즈 속에서<br />
+            머신러닝과 딥러닝으로, 복잡한 <strong>산업 데이터</strong> 속에서
             신호·이상·구조를 찾아 신뢰할 수 있는 결정으로 만듭니다.
           </Reveal>
           <Reveal className="hero__cta" delay={0.58}>
@@ -62,145 +97,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== About ===== */}
-      <section id="about" className="section section--full">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="section-index">01</span>
-            <h2 className="section-title">About</h2>
-            <Link href="/about/" className="section-more">
-              자세히 <span aria-hidden>→</span>
-            </Link>
+      {/* ===== Research map (Industrial AI → domain pillars) ===== */}
+      <section id="focus" className="section section--full">
+        <div className="container focus">
+          <Reveal className="focus__root">
+            <span className="kicker">Research Focus</span>
+            <h2 className="focus__title">Industrial AI</h2>
+            <p className="focus__sub">제조·의료·서비스로 뻗어가는 산업 AI 연구</p>
           </Reveal>
 
-          <Reveal className="about__grid">
-            <div className="about__main">
-              <span className="kicker">About the Lab</span>
-              <p className="about__lead">
-                산업 통계와 딥러닝을 결합해{" "}
-                <strong>복잡한 공학 문제를 푸는 방법론</strong>을 연구합니다.{" "}
-                <span className="muted">
-                  특히 제조·물류 분야의 품질 향상, 시스템 모니터링·이상 탐지,
-                  시계열 표현학습을 중심으로 품질 공학의 실제 문제 해결에
-                  집중합니다.
-                </span>
-              </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "8px",
-                  marginTop: "28px",
-                }}
-              >
-                {interests.map((i) => (
-                  <span key={i} className="chip chip--mono">
-                    {i}
-                  </span>
-                ))}
-              </div>
-            </div>
+          <div className="focus__trunk" aria-hidden />
 
-            <div className="about__side">
-              <span className="kicker">Research Areas</span>
-              <div className="area-list" style={{ marginTop: "20px" }}>
-                {researchAreas.map((a) => (
-                  <div key={a.code} className="area">
-                    <span className="area__code">{a.code}</span>
-                    <div>
-                      <div className="area__title">{a.title}</div>
-                      <div className="area__title-en">{a.titleEn}</div>
-                      <div className="area__desc">{a.desc}</div>
-                    </div>
-                  </div>
-                ))}
+          <Reveal className="focus__branches">
+            {focusAreas.map((a) => (
+              <div key={a.title} className="focus-node">
+                <h3 className="focus-node__title">{a.title}</h3>
+                <div className="focus-node__media" aria-hidden>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(a.image)} alt="" loading="lazy" />
+                </div>
+                <div className="focus-node__kw">
+                  {a.keywords.map((k) => (
+                    <span key={k} className="focus-kw">{k}</span>
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
           </Reveal>
         </div>
         <ScrollCue />
       </section>
 
-      {/* ===== Research (publications search) ===== */}
-      <section id="research" className="section section--full">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="section-index">02</span>
-            <h2 className="section-title">Research</h2>
-            <Link href="/research/" className="section-more">
-              프로젝트 전체 <span aria-hidden>→</span>
-            </Link>
+      {/* ===== Projects & Papers (two rotating panels) ===== */}
+      <section id="work" className="section section--full">
+        <div className="container work">
+          <Reveal className="work__head">
+            <span className="kicker">Research Output</span>
+            <h2 className="work__title">Projects &amp; Papers</h2>
+            <p className="work__sub">실제 산업 현장의 문제를 해결합니다.</p>
           </Reveal>
 
           <Reveal>
-            <PublicationsConsole />
+            <WorkPanels />
           </Reveal>
         </div>
         <ScrollCue />
       </section>
 
-      {/* ===== Activity ===== */}
+      {/* ===== Activity — the lab's current pulse ===== */}
       <section id="activity" className="section section--full">
-        <div className="container">
-          <Reveal className="section-head">
-            <span className="section-index">03</span>
-            <h2 className="section-title">Activity</h2>
-            <Link href="/activity/" className="section-more">
-              전체 보기 <span aria-hidden>→</span>
-            </Link>
+        <div className="container work">
+          <Reveal className="work__head">
+            <span className="kicker">Lab Pulse</span>
+            <h2 className="work__title">Activity</h2>
+            <p className="work__sub">매주 세미나로 연구를 다지고, 학회·수상 소식으로 채워갑니다.</p>
           </Reveal>
 
-          <Reveal className="grid-3">
-            <div className="glow act" style={{ background: "var(--bg)" }}>
-              <div className="act__h">
-                News <span className="act__tag">latest</span>
+          <Reveal className="feed">
+            <Link href="/activity/#seminar" className="glow feed__lead">
+              <div className="feed__meta">
+                <span className="feed__kind feed__kind--seminar">Seminar</span>
+                {featuredSeminar && <span className="feed__date">{fmtDate(featuredSeminar.date)}</span>}
               </div>
-              <ul className="act__list">
-                {news.slice(0, 4).map((n) => (
-                  <li key={n.date + n.title} className="act__item">
-                    <span className="act__date">{fmtDate(n.date)}</span>
-                    <span className="act__title">{n.title}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/activity/#news" className="act__more">
-                전체 보기 →
-              </Link>
-            </div>
+              <div className="feed__lead-title">{featuredSeminar?.title}</div>
+              {featuredSeminar?.presenter && (
+                <p className="feed__lead-sub">발표 · {featuredSeminar.presenter}</p>
+              )}
+              {featuredSeminar?.keywords && featuredSeminar.keywords.length > 0 && (
+                <div className="feed__lead-kw">
+                  {featuredSeminar.keywords.slice(0, 3).map((k) => (
+                    <span key={k}>{k}</span>
+                  ))}
+                </div>
+              )}
+              <span className="feed__lead-cue" aria-hidden>
+                이번 주 세미나 →
+              </span>
+            </Link>
 
-            <div className="glow act" style={{ background: "var(--bg)" }}>
-              <div className="act__h">
-                Events <span className="act__tag">recent</span>
-              </div>
-              <ul className="act__list">
-                {events.slice(0, 4).map((e) => (
-                  <li key={e.date + e.title} className="act__item">
-                    <span className="act__date">{fmtDate(e.date)}</span>
-                    <span className="act__title">{e.title}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/activity/#events" className="act__more">
-                전체 보기 →
-              </Link>
-            </div>
-
-            <div className="glow act" style={{ background: "var(--bg)" }}>
-              <div className="act__h">
-                Seminar <span className="act__tag">weekly</span>
-              </div>
-              <ul className="act__list">
-                {seminars.slice(0, 4).map((s) => (
-                  <li key={s.date + s.title} className="act__item">
-                    <span className="act__date">{fmtDate(s.date)}</span>
-                    <span className="act__title">{s.title}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/activity/#seminar" className="act__more">
-                전체 보기 →
-              </Link>
-            </div>
+            <ul className="feed__list">
+              {recent.map((it) => (
+                <li key={it.kind + it.date + it.title}>
+                  <Link href={it.href} className="feed__row">
+                    <span className={`feed__kind feed__kind--${it.kind.toLowerCase()}`}>{it.kind}</span>
+                    <span className="feed__date">{fmtDate(it.date)}</span>
+                    <span className="feed__title">{it.title}</span>
+                    <span className="feed__arrow" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
         <ScrollCue />
@@ -210,9 +198,10 @@ export default function Home() {
       <section id="life" className="section section--full section--life">
         <div className="life__main">
           <div className="container">
-            <Reveal className="section-head">
-              <span className="section-index">04</span>
-              <h2 className="section-title">Lab Life</h2>
+            <Reveal className="work__head">
+              <span className="kicker">Together</span>
+              <h2 className="work__title">Lab Life</h2>
+              <p className="work__sub">같이 연구하고, 같이 웃습니다</p>
             </Reveal>
           </div>
           <Reveal>

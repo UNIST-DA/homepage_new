@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { asset } from "@/lib/asset";
 import type { EventItem } from "@/data/activity";
 
-const LIMIT = 6;
+// Show exactly ROWS complete rows by default, whatever the column count is at
+// the current resolution (the grid is `auto-fill`, so columns vary) — so the
+// last visible row is always full, never ragged.
+const ROWS = 2;
 
 const fmt = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("ko-KR", {
@@ -14,12 +17,29 @@ const fmt = (iso: string) =>
   });
 
 export function EventsGrid({ events }: { events: EventItem[] }) {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [cols, setCols] = useState(4);
   const [showAll, setShowAll] = useState(false);
-  const shown = showAll ? events : events.slice(0, LIMIT);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const measure = () =>
+      setCols(
+        getComputedStyle(el).gridTemplateColumns.split(" ").filter(Boolean).length || 1
+      );
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const limit = cols * ROWS;
+  const shown = showAll ? events : events.slice(0, limit);
 
   return (
     <>
-      <div className="events">
+      <div className="events" ref={gridRef}>
         {shown.map((e) => (
           <div key={e.date + e.title} className="event">
             {e.image && (
@@ -36,7 +56,7 @@ export function EventsGrid({ events }: { events: EventItem[] }) {
         ))}
       </div>
 
-      {events.length > LIMIT && (
+      {events.length > limit && (
         <div className="more-wrap">
           <button className="more-btn" onClick={() => setShowAll((v) => !v)}>
             {showAll ? "접기" : `전체 보기 (${events.length})`}

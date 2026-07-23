@@ -161,7 +161,6 @@ export function HomeMorph() {
   return (
     <section className="intro" aria-label="Welcome to Data Analytics Lab">
       <canvas ref={canvasRef} className="intro__canvas" />
-      <span className="intro__label">STATISTICAL PROCESS CONTROL · DA-LAB</span>
       <div className={`intro__resolve ${revealed ? "is-on" : ""}`}>
         <span className="intro__kicker">WELCOME TO</span>
         <h1 className="intro__title">Data Analytics Lab</h1>

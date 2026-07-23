@@ -50,7 +50,14 @@ export const nav: NavItem[] = [
       { label: "Seminar", href: "/activity/#seminar" },
     ],
   },
-  { label: "Contact", href: "/contact/" },
+  {
+    label: "Contact",
+    href: "/contact/",
+    children: [
+      { label: "Contact", href: "/contact/" },
+      { label: "Apply", href: "/contact/apply/" },
+    ],
+  },
 ];
 
 export const interests = [

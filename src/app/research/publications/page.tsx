@@ -13,7 +13,7 @@ export default function PublicationsPage() {
       <PageHero
         crumb="Research · Publications"
         title="Publications"
-        lead="연구실의 저널 및 국제학회 논문입니다. 굵게 표시된 저자가 지도교수입니다."
+        lead="연구실의 저널 및 국제학회 논문입니다."
       />
       <section className="section">
         <div className="container">

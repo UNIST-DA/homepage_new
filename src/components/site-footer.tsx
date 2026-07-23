@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { externalLinks, nav, site } from "@/data/site";
+import { externalLinks, site } from "@/data/site";
+import { FooterNav } from "./footer-nav";
 
 export function SiteFooter() {
   return (
@@ -17,13 +17,7 @@ export function SiteFooter() {
 
           <div>
             <h4 className="site-footer__h">사이트맵</h4>
-            <ul className="site-footer__links">
-              {nav.map((n) => (
-                <li key={n.label}>
-                  <Link href={n.href}>{n.label}</Link>
-                </li>
-              ))}
-            </ul>
+            <FooterNav />
           </div>
 
           <div>
@@ -42,7 +36,6 @@ export function SiteFooter() {
 
         <div className="site-footer__base mono">
           <span>© {new Date().getFullYear()} {site.name}, UNIST</span>
-          <span>산업통계 · 품질공학 · 시계열</span>
         </div>
       </div>
     </footer>

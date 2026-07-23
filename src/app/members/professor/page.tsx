@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const patents = [
+  "Human activity recognition through hybrid fusion of dynamic and static data (10-2932931, 2026)",
+  "Apparatus for generating target gas detection model based on CNN learning (10-2811004, 2025)",
   "Method of anomaly detection of vessels applying Bayesian bootstrap (10-2534357, 2023)",
-  "Sensor drift compensation method and device (10-2364019, 2022)",
-  "Method and apparatus for determining delay possibility of shipment (10-2250354, 2021)",
 ];
 
 

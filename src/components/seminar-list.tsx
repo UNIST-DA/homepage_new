@@ -21,16 +21,29 @@ function Badge({ c }: { c: SeminarItem["category"] }) {
 
 export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
   const [filter, setFilter] = useState<Filter>("all");
+  const [kw, setKw] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const [open, setOpen] = useState<SeminarItem | null>(null);
 
   const featured = seminars[0];
+
+  // most-used keywords → a quick filter bar
+  const topKeywords = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const s of seminars) for (const k of s.keywords) counts.set(k, (counts.get(k) ?? 0) + 1);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 16).map(([k]) => k);
+  }, [seminars]);
+
   const list = useMemo(
-    () => (filter === "all" ? seminars : seminars.filter((s) => s.category === filter)),
-    [filter, seminars],
+    () =>
+      seminars.filter(
+        (s) => (filter === "all" || s.category === filter) && (!kw || s.keywords.includes(kw)),
+      ),
+    [filter, kw, seminars],
   );
   const shown = showAll ? list : list.slice(0, LIMIT);
   const pick = (key: Filter) => { setFilter(key); setShowAll(false); };
+  const toggleKw = (k: string) => { setKw((cur) => (cur === k ? null : k)); setShowAll(false); };
 
   // open = a modal-like panel; lock the page + pause the scroll-deck while open
   useEffect(() => {
@@ -73,6 +86,22 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
           </button>
         ))}
       </div>
+
+      {/* keyword quick-filter */}
+      {topKeywords.length > 0 && (
+        <div className="sem-kwfilter">
+          {topKeywords.map((k) => (
+            <button
+              key={k}
+              type="button"
+              className={`sem-kwchip ${kw === k ? "is-active" : ""}`}
+              onClick={() => toggleKw(k)}
+            >
+              {k}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* grid */}
       <div className="sem-grid">

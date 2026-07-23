@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { externalLinks, site } from "@/data/site";
@@ -43,11 +44,13 @@ export default function ContactPage() {
             <div className="infocard">
               <span className="kicker">For Prospective Students</span>
               <p className="prose" style={{ marginTop: 16 }}>
-                데이터 분석·머신러닝·산업통계에 관심 있는 학생을 환영합니다.
-                연락 시 <strong>CV</strong>, <strong>연구 관심사</strong>,{" "}
-                <strong>샘플 프로젝트</strong>를 함께 보내주세요.
+                데이터 분석·머신러닝·산업통계에 관심 있는 예비 대학원생을 환영합니다.
+                지원 절차와 준비 서류는 지원 안내 페이지를 확인해주세요.
               </p>
-              <h3 style={{ marginTop: 20 }}>Links</h3>
+              <Link href="/contact/apply/" className="btn btn-primary" style={{ marginTop: 4 }}>
+                지원 안내 보기 <span aria-hidden>→</span>
+              </Link>
+              <h3 style={{ marginTop: 24 }}>Links</h3>
               <ul style={{ margin: 0, paddingLeft: 18, color: "var(--text-secondary)", lineHeight: 2 }}>
                 {externalLinks.map((l) => (
                   <li key={l.label}>

@@ -1,25 +1,54 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { interests, researchAreas } from "@/data/site";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "소개",
   description:
-    "UNIST 산업공학과 데이터 애널리틱스 연구실 소개 — 산업통계와 딥러닝 기반의 품질공학·이상탐지·시계열 연구.",
+    "UNIST 산업공학과 데이터 애널리틱스 연구실 소개 — 통계와 머신러닝을 방법론으로, 산업 현장의 문제를 푸는 연구.",
 };
 
-const approach = [
-  { n: "01", t: "방법론으로서의 통계", d: "Statistics as a research methodology" },
-  { n: "02", t: "실제 데이터에서 출발", d: "Motivation from real data" },
-  { n: "03", t: "산업 현장으로의 적용", d: "Applications to industry" },
+const principles = [
+  {
+    n: "01",
+    t: "방법론으로서의 통계",
+    en: "Statistics as methodology",
+    d: "문제의 구조를 분석하고, 이에 적합한 통계·딥러닝 모델을 설계합니다.",
+  },
+  {
+    n: "02",
+    t: "실제 데이터에서 출발",
+    en: "From real data",
+    d: "산업 현장의 실제 데이터를 바탕으로 문제를 정의하고 방법론을 검증합니다.",
+  },
+  {
+    n: "03",
+    t: "산업 현장으로의 적용",
+    en: "To the field",
+    d: "연구 결과를 현장의 의사결정 문제에 적용합니다.",
+  },
 ];
 
-const photos = [
-  { src: "/assets/about/homecoming_2024.webp", cap: "Lab Homecoming" },
-  { src: "/assets/about/spring_2025.webp", cap: "UNIST Spring" },
+const domains = [
+  {
+    title: "Manufacturing AI",
+    image: "/assets/about/ManufacturingAI.png",
+    desc: "제조 공정의 품질 관리와 고차원 시계열 신호의 이상 탐지를 연구합니다.",
+    keywords: ["Quality Engineering", "Time Series Analysis"],
+  },
+  {
+    title: "Healthcare AI",
+    image: "/assets/about/healthcareAI.png",
+    desc: "생존 분석과 멀티모달 학습을 통해 의료 데이터를 분석합니다.",
+    keywords: ["Survival Analysis", "Multimodal AI"],
+  },
+  {
+    title: "Service AI",
+    image: "/assets/about/serviceAI.png",
+    desc: "LLM 기반 에이전트와 추천 시스템을 통해 서비스 데이터를 분석하고 의사결정을 지원합니다.",
+    keywords: ["Agentic AI", "Recommendation System"],
+  },
 ];
 
 export default function AboutPage() {
@@ -28,90 +57,74 @@ export default function AboutPage() {
       <PageHero
         crumb="About"
         title="About"
-        lead="산업 통계와 딥러닝/기계학습을 기반으로, 다양한 산업 현장의 복잡한 공학 문제를 해결하는 통계·데이터 사이언스 방법론을 연구합니다."
+        lead="통계와 머신러닝으로 산업 현장의 실제 문제를 연구하는 UNIST 산업공학과 연구실입니다."
       />
 
       <section className="section">
         <div className="container">
-          <Reveal className="card glow" style={{ padding: "clamp(24px,3vw,40px)" }}>
-            <span className="kicker">Data Analytics Lab</span>
-            <p className="lead-p" style={{ margin: "18px 0 0" }}>
-              UNIST 산업공학과 데이터 애널리틱스 연구실은{" "}
-              <strong>산업 통계</strong>와 <strong>딥러닝/기계학습</strong>을
-              기반으로, 제조와 물류 분야의 <strong>품질 향상</strong>,{" "}
-              <strong>시스템 모니터링·이상 탐지</strong>,{" "}
-              <strong>시계열 표현학습</strong>을 중심으로 품질 공학의 실제 문제
-              해결에 집중합니다.
+          {/* thesis */}
+          <Reveal className="about-lead">
+            <span className="kicker">About the Lab</span>
+            <p className="about-lead__stmt">
+              UNIST 산업공학과 데이터 애널리틱스 연구실은 <strong>산업 통계</strong>와{" "}
+              <strong>딥러닝·기계학습</strong>을 기반으로, <span className="keep">제조·물류·의료·교통</span> 등 다양한
+              산업 분야의 복잡한 공학 문제를 해결하는 <strong>데이터 사이언스 방법론</strong>을
+              연구합니다. 품질 향상, 시스템 모니터링 및 이상 탐지, 시계열 표현학습을 중심으로
+              방법론 연구와 산업 현장의 실제 문제 해결을 함께 추구합니다.
             </p>
-            <div className="prose" style={{ marginTop: "20px" }}>
-              <p>
-                Our research focuses on developing novel statistical and data
-                science methodologies based on industrial statistics and deep
-                learning to solve complex engineering problems across various
-                industrial domains. We pursue leading-edge research in quality
-                engineering — with emphasis on quality improvement, system
-                monitoring &amp; anomaly detection, and time-series
-                representation learning — in the era of Industry 4.0.
-              </p>
-            </div>
+            <p className="about-lead__en">
+              The Data Analytics Lab at UNIST develops novel statistical and data science
+              methodologies—grounded in industrial statistics and deep learning—to solve
+              complex engineering problems across manufacturing, logistics, healthcare, and
+              transportation. Our research centers on quality improvement, system monitoring
+              and anomaly detection, and time-series representation learning.
+            </p>
           </Reveal>
 
-          <Reveal className="cards-2" style={{ marginTop: "20px" }}>
-            <div className="infocard">
-              <span className="kicker">Interests</span>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 }}>
-                {interests.map((i) => (
-                  <span key={i} className="chip chip--mono">{i}</span>
-                ))}
-              </div>
+          {/* how we work */}
+          <Reveal className="about-block">
+            <div className="about-block__head">
+              <span className="kicker">How we work</span>
+              <h2 className="about-block__title">연구 방식</h2>
             </div>
-            <div className="infocard">
-              <span className="kicker">Research Areas</span>
-              <div className="numlist" style={{ marginTop: 12 }}>
-                {researchAreas.map((a) => (
-                  <div key={a.code} className="numlist__row">
-                    <span className="numlist__n">{a.code}</span>
-                    <div>
-                      <div className="numlist__t">{a.title}</div>
-                      <div className="numlist__d">{a.titleEn}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal className="infocard" style={{ border: "1px solid var(--border-subtle)", marginTop: "20px" }}>
-            <span className="kicker">Our Approach</span>
-            <div className="numlist" style={{ marginTop: 12 }}>
-              {approach.map((a) => (
-                <div key={a.n} className="numlist__row">
-                  <span className="numlist__n">{a.n}</span>
-                  <div>
-                    <div className="numlist__t">{a.t}</div>
-                    <div className="numlist__d">{a.d}</div>
-                  </div>
+            <div className="about-principles">
+              {principles.map((p) => (
+                <div key={p.n} className="principle">
+                  <span className="principle__n">{p.n}</span>
+                  <h3 className="principle__t">{p.t}</h3>
+                  <span className="principle__en">{p.en}</span>
+                  <p className="principle__d">{p.d}</p>
                 </div>
               ))}
             </div>
           </Reveal>
 
-          <Reveal className="cards-2" style={{ marginTop: "20px", border: 0, background: "transparent", gap: "20px" }}>
-            {photos.map((p) => (
-              <figure key={p.src} className="card" style={{ overflow: "hidden", margin: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset(p.src)} alt={p.cap} style={{ width: "100%", aspectRatio: "16/10", objectFit: "cover" }} />
-                <figcaption className="mono" style={{ padding: "10px 14px", fontSize: 12, color: "var(--text-helper)" }}>
-                  {p.cap}
-                </figcaption>
-              </figure>
-            ))}
-          </Reveal>
-
-          <Reveal style={{ marginTop: "28px" }}>
-            <Link href="/research/" className="btn btn-ghost">
-              연구 보기 <span aria-hidden>→</span>
-            </Link>
+          {/* what we research */}
+          <Reveal className="about-block">
+            <div className="about-block__head">
+              <span className="kicker">Research Focus</span>
+              <h2 className="about-block__title">Industrial AI</h2>
+              <p className="about-block__lead">
+                제조·의료·서비스 도메인을 아우르는 산업 AI 연구
+              </p>
+            </div>
+            <div className="about-domains">
+              {domains.map((d) => (
+                <div key={d.title} className="about-domain">
+                  <div className="about-domain__media">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={asset(d.image)} alt="" loading="lazy" />
+                  </div>
+                  <h3 className="about-domain__title">{d.title}</h3>
+                  <p className="about-domain__desc">{d.desc}</p>
+                  <div className="about-domain__kw">
+                    {d.keywords.map((k) => (
+                      <span key={k}>{k}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>

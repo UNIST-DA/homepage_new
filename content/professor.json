@@ -2,7 +2,7 @@
   "name": "Sungil Kim",
   "nameKo": "김성일",
   "photo": "/assets/members/professor/professor.webp",
-  "title": "Associate Professor, Department of Industrial Engineering",
+  "title": "Professor, Department of Industrial Engineering",
   "affiliations": [
     {
       "label": "Department of Industrial Engineering",
@@ -17,7 +17,7 @@
       "url": "https://unist-kor.unist.ac.kr/"
     }
   ],
-  "role": "Chair of Department (UNIST IE), 2024 — present",
+  "role": "Head, Dept. of Industrial Engineering (UNIST), 2024 — present",
   "office": "Bldg. 112, Rm. 301-8",
   "tel": "+82-52-217-3195",
   "email": "sungil.kim@unist.ac.kr",
@@ -31,7 +31,7 @@
       "url": "/assets/members/professor/prof_cv.pdf"
     }
   ],
-  "bio": "Dr. Sungil Kim is an Associate Professor in the Department of Industrial Engineering at UNIST. He focuses on modern challenges in quality engineering in the era of AI — such as sensor drift, inefficient data representation, and class imbalance — leveraging sensor and real-time log data to deliver practical, field-ready solutions.",
+  "bio": "Dr. Sungil Kim is a Professor in the Department of Industrial Engineering at UNIST. He focuses on modern challenges in quality engineering in the era of AI, such as sensor drift, inefficient data representation, and class imbalance, leveraging sensor and real-time log data to deliver practical, field-ready solutions.",
   "researchFields": [
     "System Monitoring & Anomaly Detection",
     "Sequential Learning",
@@ -49,12 +49,27 @@
   ],
   "employment": [
     {
-      "time": "2024 —",
-      "title": "Chair of Department",
+      "time": "2026 —",
+      "title": "Professor",
       "sub": "Department of Industrial Engineering, UNIST"
     },
     {
-      "time": "2020 —",
+      "time": "2026 — 2028",
+      "title": "Outside Director",
+      "sub": "Kakao Impact Foundation"
+    },
+    {
+      "time": "2025 —",
+      "title": "Director, Industry Intelligentization Institute",
+      "sub": "UNIST"
+    },
+    {
+      "time": "2024 —",
+      "title": "Head, Department of Industrial Engineering",
+      "sub": "UNIST"
+    },
+    {
+      "time": "2020 — 2026",
       "title": "Associate Professor",
       "sub": "UNIST"
     },
@@ -99,6 +114,7 @@
   "awards": [
     "Area Editor (Statistics, Quality, Reliability & Maintenance), Computers & Industrial Engineering",
     "Senior Member, INFORMS",
+    "2024 IISE Best Paper Competition Finalist, Data Analytics and Information Systems Division",
     "2023 Excellence in Mentoring Award, College of Information and Biotechnology, UNIST",
     "2021 IISE Best Paper Award, Logistics and Supply Chain Division",
     "2019 IISE Best Paper Award, Quality Control & Reliability Engineering Division"

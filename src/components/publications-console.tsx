@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { publications, type Publication } from "@/data/publications";
 
 // Research themes — a professional display label paired with the term that
@@ -41,16 +40,9 @@ function Authors({ authors }: { authors: string[] }) {
   );
 }
 
-export function PublicationsConsole() {
-  const [i, setI] = useState(0);
+export function PublicationsConsole({ tick }: { tick: number }) {
   const [typed, setTyped] = useState("");
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => setI((v) => (v + 1) % QUERIES.length), 2500);
-    return () => clearInterval(id);
-  }, []);
-
+  const i = ((tick % QUERIES.length) + QUERIES.length) % QUERIES.length;
   const cur = QUERIES[i] ?? QUERIES[0];
   const shown = cur.list.slice(0, 3);
 
@@ -83,9 +75,16 @@ export function PublicationsConsole() {
 
       <div className="pubsearch__meta">{cur.list.length} related publications</div>
 
-      <div key={`l${i}`} className="pubsearch__list pubsearch__fade">
-        {shown.map((p) => (
-          <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer" className="pub">
+      <div key={`l${i}`} className="pubsearch__list">
+        {shown.map((p, idx) => (
+          <a
+            key={p.title}
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pub"
+            style={{ animationDelay: `${idx * 90}ms` }}
+          >
             <span className={`pub__type ${p.type === "conference" ? "pub__type--conf" : ""}`}>
               {p.type === "conference" ? "Conf" : "Journal"}
             </span>
@@ -98,10 +97,6 @@ export function PublicationsConsole() {
           </a>
         ))}
       </div>
-
-      <Link href="/research/publications/" className="pubsearch__all">
-        전체 논문 보기 <span aria-hidden>→</span>
-      </Link>
     </div>
   );
 }
