@@ -757,16 +757,24 @@ strong { font-weight: 600; }
 }
 .life__main .section-head { margin-bottom: 0; }
 .section--life .site-footer { margin-top: 0; }
-/* Unify header height across the deck's content screens. These sections have
-   different content heights (the Activity feed is shorter than the Projects
-   panels), so vertical-centering dropped the Activity title ~60px lower than
-   the others. Pin their content to a consistent top instead so every section
-   title lines up. Hero and Lab Life stay centered. */
-#focus,
-#work,
-#activity {
-  justify-content: flex-start;
-  padding-top: clamp(40px, 6vh, 66px);
+/* Deck content screens: pin the header (title) at a consistent height so every
+   section title lines up, and center the body (panels / feed) in the space
+   below it. Vertically centering the whole block dropped the shorter Activity
+   feed's title ~60px lower than the Projects panels. The container fills the
+   section; the body centers itself with auto margins (its own layout is
+   untouched). Hero and Lab Life keep their own centering. */
+#focus > .container,
+#work > .container,
+#activity > .container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#work > .container > :last-child,
+#activity > .container > :last-child {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .research__lead {
   font-size: clamp(16px, 1.8vw, 20px);
