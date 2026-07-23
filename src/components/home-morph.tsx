@@ -60,10 +60,10 @@ export function HomeMorph() {
     const easeOut = (p: number) => 1 - Math.pow(1 - p, 3);
     const t0 = performance.now();
     let revealedFired = false;
+    let stopped = false;
 
     const render = (now: number) => {
-      raf = requestAnimationFrame(render);
-      if (!pts[0]) return;
+      if (!pts[0]) { raf = requestAnimationFrame(render); return; }
       const el = reduce ? DRAW + RES : now - t0;
       const p1 = Math.min(1, el / DRAW);
       const p2 = Math.min(1, Math.max(0, (el - DRAW) / RES));
@@ -148,13 +148,26 @@ export function HomeMorph() {
           ctx.beginPath(); ctx.arc(p.x, p.y, 2.6, 0, Math.PI * 2); ctx.fill();
         }
       }
+
+      // The intro plays once. Once it has fully resolved, stop the rAF loop —
+      // otherwise it repaints a full-screen canvas forever at the monitor's
+      // refresh rate, and that continuous GPU/main-thread load froze scrolling
+      // and clicks (and made the cursor flicker) on high-refresh / high-DPI
+      // displays, reported mostly on Windows.
+      if (reduce || el >= DRAW + RES) { stopped = true; return; }
+      raf = requestAnimationFrame(render);
+    };
+
+    const onResize = () => {
+      build();
+      if (stopped) raf = requestAnimationFrame(render); // one repaint at the new size
     };
 
     let raf = requestAnimationFrame(render);
-    window.addEventListener("resize", build);
+    window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", build);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
