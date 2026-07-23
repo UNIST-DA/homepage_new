@@ -49,7 +49,6 @@ export function PublicationsConsole({ tick }: { tick: number }) {
   // typewriter — type the current theme out, character by character
   useEffect(() => {
     const full = cur.label;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setTyped(full); return; }
     setTyped("");
     let n = 0;
     const id = setInterval(() => {

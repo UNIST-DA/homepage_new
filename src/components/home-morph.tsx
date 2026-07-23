@@ -21,7 +21,6 @@ export function HomeMorph() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     let W = 0, H = 0;
@@ -63,8 +62,16 @@ export function HomeMorph() {
     let stopped = false;
 
     const render = (now: number) => {
-      if (!pts[0]) { raf = requestAnimationFrame(render); return; }
-      const el = reduce ? DRAW + RES : now - t0;
+      const el = now - t0;
+      // Schedule the next frame BEFORE drawing so a transient draw error can't
+      // kill the loop (it self-heals next frame). Once the intro has fully
+      // resolved, stop instead — otherwise it repaints a full-screen canvas
+      // forever at the monitor's refresh rate, and that continuous GPU /
+      // main-thread load froze scrolling and clicks on high-refresh / high-DPI
+      // displays (reported on Windows).
+      if (el >= DRAW + RES) stopped = true;
+      else raf = requestAnimationFrame(render);
+      if (!pts[0]) return;
       const p1 = Math.min(1, el / DRAW);
       const p2 = Math.min(1, Math.max(0, (el - DRAW) / RES));
       const ca = 1 - 0.82 * easeOut(p2);
@@ -148,14 +155,6 @@ export function HomeMorph() {
           ctx.beginPath(); ctx.arc(p.x, p.y, 2.6, 0, Math.PI * 2); ctx.fill();
         }
       }
-
-      // The intro plays once. Once it has fully resolved, stop the rAF loop —
-      // otherwise it repaints a full-screen canvas forever at the monitor's
-      // refresh rate, and that continuous GPU/main-thread load froze scrolling
-      // and clicks (and made the cursor flicker) on high-refresh / high-DPI
-      // displays, reported mostly on Windows.
-      if (reduce || el >= DRAW + RES) { stopped = true; return; }
-      raf = requestAnimationFrame(render);
     };
 
     const onResize = () => {

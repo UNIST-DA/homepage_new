@@ -13,8 +13,7 @@ export function ScrollDeck() {
     html.setAttribute("data-deck", "");
 
     const fine = window.matchMedia("(pointer: fine)").matches;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce) return () => html.removeAttribute("data-deck");
+    if (!fine) return () => html.removeAttribute("data-deck");
 
     let targets: number[] = [];
     const collect = () => {

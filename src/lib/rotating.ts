@@ -13,7 +13,6 @@ export function useRotatingIndex(period = 2400) {
   const [i, setI] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!start) start = performance.now();
     const tick = () =>
       setI(Math.floor((performance.now() - start) / period) % ROT_WORDS.length);
