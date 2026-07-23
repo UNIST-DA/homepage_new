@@ -361,7 +361,8 @@ strong { font-weight: 600; }
   color: var(--text);
   border-bottom-color: var(--blue);
 }
-.site-nav__caret { font-size: 9px; opacity: 0.6; }
+.site-nav__caret { font-size: 12px; opacity: 0.75; margin-left: 4px; transition: transform 0.2s var(--ease); }
+.has-dd:hover .site-nav__caret { transform: translateY(2px); opacity: 1; }
 .site-nav__dd {
   position: absolute;
   top: 100%;
@@ -756,6 +757,17 @@ strong { font-weight: 600; }
 }
 .life__main .section-head { margin-bottom: 0; }
 .section--life .site-footer { margin-top: 0; }
+/* Unify header height across the deck's content screens. These sections have
+   different content heights (the Activity feed is shorter than the Projects
+   panels), so vertical-centering dropped the Activity title ~60px lower than
+   the others. Pin their content to a consistent top instead so every section
+   title lines up. Hero and Lab Life stay centered. */
+#focus,
+#work,
+#activity {
+  justify-content: flex-start;
+  padding-top: clamp(40px, 6vh, 66px);
+}
 .research__lead {
   font-size: clamp(16px, 1.8vw, 20px);
   color: var(--text);
