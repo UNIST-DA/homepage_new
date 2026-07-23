@@ -87,11 +87,11 @@ html {
      CSS smooth here would re-ease every manual frame and fight it. */
   scroll-padding-top: calc(var(--header-h) + 16px);
 }
-/* Touch: native CSS snap (feels good with momentum). Desktop (fine pointer)
-   uses the JS ScrollDeck instead, so disable CSS snap there to avoid conflict. */
-@media (pointer: coarse) {
-  html[data-deck] { scroll-snap-type: y mandatory; } /* home deck only — other pages scroll freely */
-}
+/* Touch / small screens scroll naturally. Mandatory snap here trapped tall
+   sections (you couldn't reach a section's bottom — e.g. the Industrial AI
+   keywords) and yanked the page back up whenever an auto-rotating panel
+   reflowed. The cinematic one-section-per-gesture glide stays on desktop via
+   the JS ScrollDeck (fine pointer only). */
 body {
   margin: 0;
   background: var(--bg);
@@ -690,6 +690,24 @@ strong { font-weight: 600; }
   margin: 16px 2px 8px;
 }
 .pubsearch__list { display: flex; flex-direction: column; }
+/* Keep the rotating console a fixed height: every row reserves 2 title lines +
+   1 author line, and the list always renders 3 rows (real + hidden ghosts), so
+   swapping topics never reflows the page (which was making it jump / yank). */
+.pubsearch__list .pub__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2 * 1.4em);
+}
+.pubsearch__list .pub__authors {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .pubsearch__empty { color: var(--text-helper); padding: 24px 2px; font-size: 15px; }
 .pubsearch__all {
   display: inline-block;
@@ -1025,7 +1043,9 @@ strong { font-weight: 600; }
 .focus-node__media {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  /* Cap by viewport HEIGHT so the whole tree (title → image → keywords) fits a
+     laptop screen and the keywords never get clipped off the bottom. */
+  width: min(100%, 30vh);
   aspect-ratio: 1 / 1;
   background: var(--layer);
   display: flex;
@@ -1154,6 +1174,13 @@ strong { font-weight: 600; }
   line-height: 1.35;
   letter-spacing: -0.01em;
   transition: color 0.15s var(--ease);
+  /* reserve 2 lines so a short vs. long title doesn't reflow the panel as it rotates */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2 * 1.35em);
 }
 .spotlight__card:hover .spotlight__title { color: var(--blue); }
 .spotlight__summary {
@@ -1163,8 +1190,10 @@ strong { font-weight: 600; }
   margin: 10px 0 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: calc(2 * 1.6em);
 }
 @media (prefers-reduced-motion: reduce) {
   .spotlight__card { animation: none; }

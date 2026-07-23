@@ -45,6 +45,10 @@ export function PublicationsConsole({ tick }: { tick: number }) {
   const i = ((tick % QUERIES.length) + QUERIES.length) % QUERIES.length;
   const cur = QUERIES[i] ?? QUERIES[0];
   const shown = cur.list.slice(0, 3);
+  // Always render 3 rows (real + hidden ghosts) so the panel height is constant
+  // as topics rotate — a changing row count was reflowing the whole page.
+  const ROWS = 3;
+  const ghosts = Math.max(0, ROWS - shown.length);
 
   // typewriter — type the current theme out, character by character
   useEffect(() => {
@@ -94,6 +98,15 @@ export function PublicationsConsole({ tick }: { tick: number }) {
               </div>
             </div>
           </a>
+        ))}
+        {Array.from({ length: ghosts }).map((_, idx) => (
+          <div key={`ghost${idx}`} className="pub" aria-hidden style={{ visibility: "hidden" }}>
+            <span className="pub__type">Conf</span>
+            <div>
+              <div className="pub__title">·</div>
+              <div className="pub__authors">·</div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
