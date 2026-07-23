@@ -81,7 +81,10 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+  /* No CSS `scroll-behavior: smooth` — all programmatic smooth scrolling is
+     done manually via src/lib/smooth-scroll.ts so it works even when the OS
+     "reduce motion" setting is on (which makes native smooth-scroll instant).
+     CSS smooth here would re-ease every manual frame and fight it. */
   scroll-padding-top: calc(var(--header-h) + 16px);
 }
 /* Touch: native CSS snap (feels good with momentum). Desktop (fine pointer)

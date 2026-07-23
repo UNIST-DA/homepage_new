@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { nav } from "@/data/site";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 // Same-route links are a no-op in Next.js — make footer sitemap links scroll to
 // the top when you're already on that page.
@@ -19,9 +20,9 @@ export function FooterNav() {
     const el = hash ? document.getElementById(hash) : null;
     if (el) {
       const headerH = (document.querySelector(".site-header") as HTMLElement | null)?.offsetHeight ?? 0;
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - headerH - 12, behavior: "smooth" });
+      smoothScrollTo(el.getBoundingClientRect().top + window.scrollY - headerH - 12);
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      smoothScrollTo(0);
     }
   };
 

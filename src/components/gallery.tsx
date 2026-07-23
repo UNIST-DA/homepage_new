@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { galleryPhotos } from "@/data/site";
 import { asset } from "@/lib/asset";
+import { smoothScrollByX } from "@/lib/smooth-scroll";
 
 // Three concatenated copies form an endless track. We keep the viewport inside
 // the middle copy; whenever it drifts into a side copy we shift scrollLeft by
@@ -57,7 +58,7 @@ export function Gallery() {
   const page = (dir: number) => {
     const el = ref.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+    smoothScrollByX(el, dir * el.clientWidth * 0.8);
   };
 
   const onDown = (e: React.PointerEvent) => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 // Desktop (mouse/trackpad): one wheel/key gesture animates to the next/previous
 // full-screen section — the intro→hero glide, generalized to the whole deck,
@@ -33,9 +34,9 @@ export function ScrollDeck() {
         dir > 0 ? targets.find((t) => t > y + 5) : [...targets].reverse().find((t) => t < y - 5);
       if (target == null) return false;
       animating = true;
-      window.scrollTo({ top: target, behavior: "smooth" });
+      smoothScrollTo(target);
       clearTimeout(timer);
-      timer = setTimeout(() => { animating = false; }, 850);
+      timer = setTimeout(() => { animating = false; }, 720);
       return true;
     };
 
