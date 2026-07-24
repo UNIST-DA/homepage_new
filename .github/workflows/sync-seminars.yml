@@ -1,0 +1,38 @@
+name: Sync seminars from Notion
+
+# Lab members edit the Notion seminar DB; this pulls it into
+# web/content/seminars/*.md and commits (which triggers the Pages deploy).
+# Runs daily and can be run on demand from the Actions tab ("Run workflow").
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 0 * * *" # 09:00 KST daily
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-seminars
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Sync from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_SEMINAR_DB_ID: ${{ secrets.NOTION_SEMINAR_DB_ID }}
+        run: npm run sync:seminars
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(seminar): sync from Notion"
+          file_pattern: "content/seminars/** public/assets/seminars/**"
