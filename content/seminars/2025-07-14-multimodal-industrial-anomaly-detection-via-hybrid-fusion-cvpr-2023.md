@@ -20,7 +20,7 @@ Multimodal Industrial Anomaly Detection via Hybrid FusionWang et al,. Proceeding
 
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-07-14-multimodal-industrial-anomaly-detection--a28.pdf)
 
 
 

@@ -8,7 +8,7 @@ keywords: imputation, Statistics
 ---
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-09-05-multiple-imputation-for-missing-data-a23.pdf)
 
 
 - **Imputation** is a technique for valid statistical inference with incomplete data, not just for filling in values.
@@ -18,4 +18,4 @@ keywords: imputation, Statistics
 - **Missing Not at Random (MNAR)** situations can be analyzed using the **Selection Model** or the **Pattern-Mixture Model**.
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-09-05-multiple-imputation-for-missing-data-a24.pdf)

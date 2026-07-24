@@ -17,7 +17,7 @@ keywords: DeepLearning, time series, Diffusion Model
 
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-11-mtsci-a-conditional-diffusion-model-for--a32.pdf)
 
 
 
@@ -37,7 +37,7 @@ Missing values are prevalent in multivariate time series, compromising the integ
 
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-04-11-mtsci-a-conditional-diffusion-model-for--a33.pptx)
 
 
 

@@ -45,13 +45,13 @@ Survival analysis (SA)
 - <u>prognosing the time-to-event</u> by **estimating the relationships between covariates and the hitting time of events of interest.**
 - It has been widely recognized as an essential tool for health service management.
 
-![](/assets/seminars/deep-csa-deep-contrastive-learning-for-dynamic-survival-analysis-with-competing-/0.jpeg)
+![](/assets/seminars/deep-csa-deep-contrastive-learning-for-dynamic-survival-analysis-with-competing-/0.jpg)
 
 
 ![](/assets/seminars/deep-csa-deep-contrastive-learning-for-dynamic-survival-analysis-with-competing-/1.png)
 
 
-![](/assets/seminars/deep-csa-deep-contrastive-learning-for-dynamic-survival-analysis-with-competing-/2.jpeg)
+![](/assets/seminars/deep-csa-deep-contrastive-learning-for-dynamic-survival-analysis-with-competing-/2.jpg)
 
 
 CPH(Cox proportional hazard model)

@@ -16,4 +16,4 @@ keywords: LLM, Anomaly Detection
 
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-10-13-large-language-models-can-deliver-accura-a21.pdf)

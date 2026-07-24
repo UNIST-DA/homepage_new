@@ -8,4 +8,4 @@ keywords: Uncertainty Estimation, LLM
 ---
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2026-03-20-a-survey-of-uncertainty-estimation-metho-a11.pptx)

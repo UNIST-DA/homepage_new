@@ -8,4 +8,4 @@ keywords: Survival Analysis, Deep Learning
 ---
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-01-10-neural-frailty-machine-beyond-proportion-a40.pdf)

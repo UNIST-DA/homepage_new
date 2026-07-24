@@ -8,9 +8,9 @@ keywords: Statistics
 ---
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-07-07-bayesian-calibration-of-computer-models--a29.pdf)
 
 
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-07-07-bayesian-calibration-of-computer-models--a30.pdf)

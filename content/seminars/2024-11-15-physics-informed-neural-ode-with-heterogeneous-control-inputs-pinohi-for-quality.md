@@ -29,7 +29,7 @@ Composite materials have long been used in various industries due to their super
 
 
 
-📄 첨부파일 (노션 원문 참고)
+[📄 첨부파일 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2024-11-15-physics-informed-neural-ode-with-heterog-a45.pptx)
 
 
 

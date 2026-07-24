@@ -11,4 +11,4 @@ keywords: LLM, Retrieval Augmented Generation
 
 
 
-📄 PDF 자료 (노션 원문 참고)
+[📄 PDF 자료 ↗](https://github.com/UNIST-DA/homepage_new/releases/download/seminar-assets/2025-09-29-an-advanced-retrieval-augmented-generati-a22.pdf)
