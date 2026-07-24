@@ -25,7 +25,9 @@ Neural controlled differential equations (Neural CDEs) are a continuous-time ex-
 ## Link
 
 
-[bookmark](https://arxiv.org/abs/2106.11028)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/2106.11028)
+
 
 
 # Paper Review

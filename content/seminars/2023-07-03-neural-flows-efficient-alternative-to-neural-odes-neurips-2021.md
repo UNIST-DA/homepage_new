@@ -25,10 +25,14 @@ Neural ordinary differential equations describe how values change in time. This 
 Biloš, M., Sommer, J., Rangapuram, S. S., Januschowski, T., & Günnemann, S. (2021). Neural flows: Efficient alternative to neural ODEs. _Advances in neural information processing systems_, _34_, 21325-21337.
 
 
-[bookmark](https://arxiv.org/pdf/2110.13040.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2110.13040.pdf)
 
 
-[bookmark](https://slideslive.com/38967396/neural-flows-efficient-alternative-to-neural-odes)
+
+
+[📄 자료 링크 ↗](https://slideslive.com/38967396/neural-flows-efficient-alternative-to-neural-odes)
+
 
 
 # Paper Review
@@ -40,7 +44,9 @@ Biloš, M., Sommer, J., Rangapuram, S. S., Januschowski, T., & Günnemann, S. (2
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/0.png)
 
 
-[bookmark](https://arxiv.org/abs/2012.00168)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/2012.00168)
+
 
 
 ![Structure of vanilla RNNs](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/1.png)
@@ -101,13 +107,19 @@ Let model $F : [0, T] \times \mathbb{R}^{d_z} \rightarrow \mathbb{R}^{d_z}$ be a
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/7.png)
 
 
-[bookmark](https://arxiv.org/pdf/1806.07366.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1806.07366.pdf)
 
 
-[bookmark](https://arxiv.org/pdf/1811.00995.pdf)
 
 
-[bookmark](https://arxiv.org/pdf/2205.14612.pdf)
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1811.00995.pdf)
+
+
+
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2205.14612.pdf)
+
 
 
 ### ResNet flow
@@ -134,13 +146,19 @@ Let model $F : [0, T] \times \mathbb{R}^{d_z} \rightarrow \mathbb{R}^{d_z}$ be a
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/11.png)
 
 
-[bookmark](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+
+[📄 자료 링크 ↗](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 
 
-[bookmark](https://lilianweng.github.io/posts/2018-10-13-flow-models/)
 
 
-[bookmark](https://www.vanillabug.com/posts/sde/#tldr)
+[📄 자료 링크 ↗](https://lilianweng.github.io/posts/2018-10-13-flow-models/)
+
+
+
+
+[📄 자료 링크 ↗](https://www.vanillabug.com/posts/sde/#tldr)
+
 
 
 ## Continuous-time latent variable models
@@ -155,7 +173,9 @@ Let model $F : [0, T] \times \mathbb{R}^{d_z} \rightarrow \mathbb{R}^{d_z}$ be a
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/13.png)
 
 
-[bookmark](https://papers.nips.cc/paper_files/paper/2019/file/42a6845a557bef704ad8ac9cb4461d43-Paper.pdf)
+
+[📄 자료 링크 ↗](https://papers.nips.cc/paper_files/paper/2019/file/42a6845a557bef704ad8ac9cb4461d43-Paper.pdf)
+
 
 
 ### Smoothing
@@ -180,7 +200,9 @@ Using continuous time models brings up multiple advantages, from handling irregu
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/14.png)
 
 
-[bookmark](https://arxiv.org/pdf/2009.08295.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2009.08295.pdf)
+
 
 
 ### Filtering
@@ -195,7 +217,9 @@ Here, the prediction for future time steps is done by evolving the posterior cor
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/15.png)
 
 
-[bookmark](https://arxiv.org/pdf/2106.11028.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2106.11028.pdf)
+
 
 
 ## Temporal point processes
@@ -207,7 +231,9 @@ Here, the prediction for future time steps is done by evolving the posterior cor
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/16.png)
 
 
-[bookmark](https://arxiv.org/pdf/2104.03528.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2104.03528.pdf)
+
 
 
 A realization of a TPP on an interval $[0, T]$ is an increasing sequence of arrival times $\bm{t} = (t_1, \dots, t_n)$, $t_i \in [0, T]$, where $n$ is a random variable. The model is defined with an intensity function $\lambda(t)$ that tells us how many events we expect to see in some bounded area. The intensity has to be positive. We define the history $\mathcal{H}_{t_i}$ as the events that precede $t_i$, and further define the conditional intensity function $\lambda^*(t)$ which depends on history. For convenience, we can also work with inter-event times $\tau_i = t_i - t_{i-1}$, without losing generality. We train the model by maximizing the log-likelihood:
@@ -268,7 +294,9 @@ where $q$ is the base density (defined with any NF) and the determinant is the p
 ![](/assets/seminars/neural-flows-efficient-alternative-to-neural-odes-neurips-2021/17.png)
 
 
-[bookmark](https://arxiv.org/pdf/2011.04583.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2011.04583.pdf)
+
 
 
 ## Experiments

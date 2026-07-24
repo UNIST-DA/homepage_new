@@ -28,21 +28,27 @@ Deep one-class classification variants for anomaly detection learn a mapping tha
 EXPLAINABLE DEEP ONE-CLASS CLASSIFICATION
 
 
-[bookmark](https://arxiv.org/pdf/2007.01760.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2007.01760.pdf)
+
 
 
 HSC
 
 - Rethinking Assumptions in Deep Anomaly Detection
 
-[bookmark](https://arxiv.org/pdf/2006.00339.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2006.00339.pdf)
+
 
 
 Upsampling
 
 - Understanding the Effective Receptive Field in Deep Convolutional Neural Networks
 
-[bookmark](https://arxiv.org/pdf/1701.04128.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1701.04128.pdf)
+
 
 
 # Summary

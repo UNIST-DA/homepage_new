@@ -26,7 +26,10 @@ Y. Lee, E. Jun, J. Choi and H. -I. Suk, "Multi-View Integrative Attention-Based 
 
 
 
-[bookmark](https://ieeexplore.ieee.org/document/9769928)
+
+[📄 자료 링크 ↗](https://ieeexplore.ieee.org/document/9769928)
 
 
-[Seminar_Multi-View_Integrative_Attention-Based_Deep_Representation_Learning_for_Irregular_Clinical_Time-Series_Data%2810.11%29.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab7ec56c-704a-42ff-8b90-7315397db1e8/92953c6d-5d7d-4298-b087-7d3862e26c56/Seminar_Multi-View_Integrative_Attention-Based_Deep_Representation_Learning_for_Irregular_Clinical_Time-Series_Data%2810.11%29.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466UCKUJHLT%2F20260724%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260724T082109Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaCXVzLXdlc3QtMiJIMEYCIQDQUwMpt5gPrIMa4mGwCbzZMOhF9Bbu2nzq2XiqwLsF2QIhAJSHO%2BSIc7y4GH9DwGZNbIkjKIsHDjYnDVYaO83iDuD%2BKv8DCAEQABoMNjM3NDIzMTgzODA1IgyW%2B0RdtCN%2FYAvXmOUq3AOW7xj%2FBKtVQ43vlgpcqrD53nFIt1POAAgM4%2BpJ78DLB9yxP8bPgttoI4E4z0mLNWoHx5BtZ3NTZh5ayNxZ64OxJeSmF0%2Fw4Js1mNTQp8yRenm9nT9vj3eH1MuUhjSuJD%2BYOrZySUoN8Hi%2B1mu6%2FXkdOdqpbxwn4MxaXX507Qmi%2BetaB7LY3CEG8oNrYBQTmlVLtlEfJU0amC%2Fy5wJj3DHB1KQeyKOnFAa1QYkl6Ji8pQlPvPzzP0Vh4IVJ0RkhphWQX4z8%2FhKd7oLHY9%2FtjMcHCmoF0pS3hk31WcFlI5BP7mo2bGlpPinYGs8PmOnuetXU1MuTlus8e7EM%2FNy1IHr5T7P6YbcQVZrvGgWHJQnGbtw4Q4gdjC7l1sJxQ%2BlDFbLfncu07p0DzAzmXcKV0WxoF00QX5qVx1K2K3Wt9zsMLg5WZ2kx%2FmA3cSP%2BStG2bqH9g%2BE2UC3EbT1iiV7eMd%2BN63mPuUnGqzKM%2BmwN1R2oU2yb%2FnWS5RaetWmZm8m0UY%2BJKnjI%2FC6zqLSwNWgWnPEGOcAq1jXT7y69vjdyrVsVe3GT4VOGYkN09mswbNzIaKwsJyWN2mJ5k9YeTubcngFpLYW4%2Bdzw6MIXwhCSbXHY9yJTBsO4MlAE%2FNDIsDDyrYzTBjqkARUBE12tjcUyXV4IJDmxabO6UYBE5Q2CDmqgxwtfsskzpXG%2BqtA04JILzedqgQR6pW%2Ba3EuNw1LZFna6m83h%2FMv4yY507F7Sb7xRaYoQ4XLpaOPFP3aKQTLzmUUk9uLCgV5oUtHUap1LikN8lhdwCELYOORkaBTJqO8ZqFqWi9wFGVGM%2BdS1EfzpodipXnqKK0ZB99QF%2FT906FDEoXKyZj91D7ut&X-Amz-Signature=4bdd38847c0358f37e16e7b3b4ff4b52e03d36efd2a4cd0acea8b6cea99ed3ca&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+📄 PDF 자료 (노션 원문 참고)

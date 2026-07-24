@@ -28,7 +28,9 @@ Bayesian neural networks (BNN) and deep ensembles are principled approaches to e
 ## Link
 
 
-[bookmark](https://proceedings.neurips.cc/paper/2020/hash/543e83748234f7cbab21aa0ade66565f-Abstract.html)
+
+[📄 자료 링크 ↗](https://proceedings.neurips.cc/paper/2020/hash/543e83748234f7cbab21aa0ade66565f-Abstract.html)
+
 
 
 # Paper Review

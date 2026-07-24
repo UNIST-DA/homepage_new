@@ -10,7 +10,9 @@ keywords: Domain adaptation, Bidirectional learning
 ## Link
 
 
-[bookmark](https://openaccess.thecvf.com/content_CVPR_2019/html/Li_Bidirectional_Learning_for_Domain_Adaptation_of_Semantic_Segmentation_CVPR_2019_paper.html)
+
+[📄 자료 링크 ↗](https://openaccess.thecvf.com/content_CVPR_2019/html/Li_Bidirectional_Learning_for_Domain_Adaptation_of_Semantic_Segmentation_CVPR_2019_paper.html)
+
 
 
 ## Abstract

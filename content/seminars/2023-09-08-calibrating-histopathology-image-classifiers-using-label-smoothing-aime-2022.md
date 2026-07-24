@@ -10,7 +10,9 @@ keywords: Label Smoothing, Model Calibration
 ## Link
 
 
-[bookmark](https://link.springer.com/chapter/10.1007/978-3-031-09342-5_26)
+
+[📄 자료 링크 ↗](https://link.springer.com/chapter/10.1007/978-3-031-09342-5_26)
+
 
 
 ## Abstract
@@ -108,20 +110,26 @@ Left: baseline(hard label) / Right: vanilla label smoothing](/assets/seminars/ca
 **When Does Label Smoothing Help?**
 
 
-[bookmark](https://arxiv.org/abs/1906.02629)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1906.02629)
+
 
 - Originally proposed seeks to improve calibration and has been found to reduce expected calibration error on computer vision benchmarks
 
 ⇒ 실제로는 **Rethinking the Inception Architecture for Computer Vision**에서 제안됨
 
 
-[bookmark](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Szegedy_Rethinking_the_Inception_CVPR_2016_paper.html)
+
+[📄 자료 링크 ↗](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Szegedy_Rethinking_the_Inception_CVPR_2016_paper.html)
+
 
 
 **Interpreting chest X-rays via CNNs that exploit hierarchical disease dependencies and uncertainty labels**
 
 
-[bookmark](https://arxiv.org/abs/1911.06475)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1911.06475)
+
 
 - Proposed to remap targets to random numbers close to one
 
@@ -131,7 +139,9 @@ Left: baseline(hard label) / Right: vanilla label smoothing](/assets/seminars/ca
 **Human uncertainty makes classification more robust**
 
 
-[bookmark](https://arxiv.org/abs/1908.07086)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1908.07086)
+
 
 - Sampling ground truth labels from a distribution of human annotations
 

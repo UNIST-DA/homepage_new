@@ -22,13 +22,17 @@ One main challenge in time series anomaly detection (TSAD) is the lack of labell
 ## Link
 
 
-[bookmark](https://www.sciencedirect.com/science/article/pii/S0031320324006253)
+
+[📄 자료 링크 ↗](https://www.sciencedirect.com/science/article/pii/S0031320324006253)
+
 
 
 # Seminar Slide
 
 
-[CARLA.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab7ec56c-704a-42ff-8b90-7315397db1e8/06b8fc51-e693-4034-90ab-e326fc3cc344/CARLA.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663ARSO3PC%2F20260724%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260724T082043Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaCXVzLXdlc3QtMiJIMEYCIQC3hdd1Svo0QBZ%2FLr%2Ftco7VCgv4B2MXQ7ILBbZgw6G2JAIhAJ0ilW2KmxRuFDh5cLLGh2YqcT7Fqg5DrJH5wcs2P7KJKv8DCAEQABoMNjM3NDIzMTgzODA1IgyIHG%2BvR6ohnkBT2igq3AOPifOVbnYantBfv7umznY2YKEZI4gWKV2ftPZApKHGK6wdZnSfN5Avo%2FMqTZlni3l7sn4E%2BCZCFC6cGfCSH7QrLzraFZthBN8KaPqLQ6fT%2BudV%2B11cf0bXW%2Brj6kyR3Ps7LvhVQ%2FMP1eoof0E0KICuvPkmEix9gmG0BpHEZ1vasSfn8JeneSM%2BkbZj9LV0YFiXNUeg8zq8B1wS1dwd9gD2Islf7wF1un8mqPGvyiaxw2knHPxRNJirDTxkHczL2SvFq6w2cDHntKK65GYiIQEDKICJuBQPY11SZf%2BlmIGXlRVzK%2Bi1YwT%2BfHga6LMsK4DwL%2B6FApyr4xvlsu7WpRebtSUNVvzMj9QKtwv%2F%2FVjiUhSn6vrPbe5rRuIzYZkzdUtRFnv6ORYXX3ftAmJ%2BBpeiPfjq5E5zRLXAr%2FvgfeaSFt7sG%2FTbEoYFWNtiM7Fq4gn6FDXpyuk9Ro384cecfhQD4sIG7OJy8EfN3Ov4qMqQrn0aEBxrxfGsfACOq%2F0TvIZCU5V6zTdWoRsfqwrcZPQNzkEFCanU79WGAhJMw1tYrkl4n69Jpn6QrJshviM%2B8Fcm9junjFV7eMuYPyPF1SIZPSf2Fma8pc759NTGrVA50SNktAITteb7BEU8RzC2rozTBjqkAT9y1IN6NYA8U1qJkRGPPBdAEKeBLMhjZjGh0PTlE%2FNhuNECf%2FybTzTE5Dx0AGBW%2BAG3QpppJjt%2F4w9TiTf0vydu63Aod93LxcIzRp6Lm%2FGUk%2BQvm5COIosjGAIiuBore8sIJId6cEVb4807LdPmGy8%2F%2B8NyClY2CkJxONOxIocLH1o7i%2FIwePUahlsj00Eriq81Y1WW02%2BY5kymoFG7zDUwDOO%2B&X-Amz-Signature=b3787e2e895d610c5827f177fd4d31456b0e22021e721bc3ef90793913826bf4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+📄 PDF 자료 (노션 원문 참고)
+
 
 
 # Comments

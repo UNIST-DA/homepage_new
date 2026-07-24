@@ -25,7 +25,9 @@ This study proposes a control chart based on functional data to detect anomalies
 ## Link
 
 
-[bookmark](https://www.mdpi.com/2227-7390/8/1/58)
+
+[📄 자료 링크 ↗](https://www.mdpi.com/2227-7390/8/1/58)
+
 
 
 # Review

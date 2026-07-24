@@ -25,7 +25,9 @@ Effective learning from electronic health records (EHR) data for prediction of c
 ## Link
 
 
-[bookmark](https://proceedings.mlr.press/v182/moon22a.html)
+
+[📄 자료 링크 ↗](https://proceedings.mlr.press/v182/moon22a.html)
+
 
 
 # Paper Review

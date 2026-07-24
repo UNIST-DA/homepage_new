@@ -25,7 +25,9 @@ The recent boom of linear forecasting models questions the ongoing passion for a
 ## Link
 
 
-[bookmark](https://arxiv.org/pdf/2310.06625)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2310.06625)
+
 
 
 # Paper Review

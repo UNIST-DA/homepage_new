@@ -43,7 +43,9 @@ The predictive and modeling capabilities of DeepSurv will enable medical researc
 ## Link
 
 
-[bookmark](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1#Abs1)
+
+[📄 자료 링크 ↗](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1#Abs1)
+
 
 
 ## Background

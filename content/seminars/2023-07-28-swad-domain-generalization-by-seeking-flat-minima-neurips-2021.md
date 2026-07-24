@@ -10,7 +10,9 @@ keywords: Domain Generalization, optimization
 ## Link
 
 
-[bookmark](https://proceedings.neurips.cc/paper_files/paper/2021/hash/bcb41ccdc4363c6848a1d760f26c28a0-Abstract.html)
+
+[📄 자료 링크 ↗](https://proceedings.neurips.cc/paper_files/paper/2021/hash/bcb41ccdc4363c6848a1d760f26c28a0-Abstract.html)
+
 
 
 ## Abstract

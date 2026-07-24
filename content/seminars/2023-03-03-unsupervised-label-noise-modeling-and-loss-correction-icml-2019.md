@@ -22,7 +22,9 @@ Despite being robust to small amounts of label noise, convolutional neural netwo
 ## Link
 
 
-[bookmark](https://arxiv.org/abs/1904.11238)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1904.11238)
+
 
 
 # Paper Review
@@ -31,7 +33,9 @@ Despite being robust to small amounts of label noise, convolutional neural netwo
 ## Motivation: **Deep NN can Learn Random Noise**
 
 
-[bookmark](https://lilianweng.github.io/posts/2019-03-14-overfit/)
+
+[📄 자료 링크 ↗](https://lilianweng.github.io/posts/2019-03-14-overfit/)
+
 
 
 As we know two-layer neural networks are universal approximators, it is less surprising to see that they are able to learn unstructured random noise perfectly, as shown in Zhang, et al. (2017). If labels of image classification dataset are randomly shuffled, the high expressivity power of deep neural networks can still empower them to achieve near-zero training loss. These results do not change with regularization terms added.
@@ -40,7 +44,9 @@ As we know two-layer neural networks are universal approximators, it is less sur
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/0.png)
 
 
-[bookmark](https://arxiv.org/abs/1611.03530)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1611.03530)
+
 
 
 The traditional machine learning uses the following U-shape risk curve to measure the bias-variance trade-offs and quantify how generalizable a model is. If I get asked how to tell whether a model is overfitted, this would be the first thing popping into my mind.
@@ -52,7 +58,9 @@ As the model turns larger (more parameters added), the training error decreases 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/1.png)
 
 
-[bookmark](https://arxiv.org/pdf/1812.11118.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1812.11118.pdf)
+
 
 
 ## Motivation: Noisy label problem
@@ -66,7 +74,9 @@ As the model turns larger (more parameters added), the training error decreases 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/3.png)
 
 
-[bookmark](https://icml.cc/media/Slides/icml/2019/102(13-16-00)-13-17-05-5042-unsupervised_la.pdf)
+
+[📄 자료 링크 ↗](https://icml.cc/media/Slides/icml/2019/102(13-16-00)-13-17-05-5042-unsupervised_la.pdf)
+
 
 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/4.png)
@@ -206,7 +216,9 @@ We refer to this approach as **static hard bootstrapping**. Reed et al., (2015) 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/7.png)
 
 
-[bookmark](http://www-personal.umich.edu/~reedscot/bootstrap.pdf)
+
+[📄 자료 링크 ↗](http://www-personal.umich.edu/~reedscot/bootstrap.pdf)
+
 
 
 We propose **dynamic hard** and **soft bootstrapping losses** by using our noise model to individually weight each sample; i.e., $w_{i}$ is dynamically set to $p\!\left(k=1\mid\ell_{i}\right)$ and the BMM model is estimated after each training epoch using the cross-entropy loss for each sample $\ell_{i}$. Therefore, clean samples rely on their ground-truth label $y_{i}$ ($1-w_{i}$ is large), while noisy ones let their loss being dominated by their class prediction $z_{i}$ or their predicted probabilities $\mathit{h_{i}}$ ($w_{i}$ is large), respectively, for hard and soft alternatives.
@@ -234,7 +246,9 @@ where $\delta$ is randomly sampled from a beta distribution $\mathcal{B}e\left(\
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/8.png)
 
 
-[bookmark](https://arxiv.org/pdf/1710.09412.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1710.09412.pdf)
+
 
 
 <u>Mixup</u> achieves robustness to label noise by appropriate combinations of training examples. Under high-levels of noise mixing samples that both have incorrect labels is prevalent, which reduces the effectiveness of the method. We propose to fuse <u>mixup</u> and our dynamic bootstrapping to implement a robust per-sample loss correction approach:
@@ -264,7 +278,9 @@ $$
 where $p_{c}$ denotes the prior probability distribution for class $c$ and $\overline{h}_{c}$ is the mean softmax probability of the model for class $c$ across all samples in the dataset.
 
 
-[bookmark](https://arxiv.org/pdf/1803.11364.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1803.11364.pdf)
+
 
 
 ### Experiments
@@ -329,7 +345,9 @@ where $s_{ij}$ denotes the <u>score obtained in the last layer of the CNN model 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/15.png)
 
 
-[bookmark](https://cs.nyu.edu/~mohri/pub/bandit.pdf)
+
+[📄 자료 링크 ↗](https://cs.nyu.edu/~mohri/pub/bandit.pdf)
+
 
 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/16.png)
@@ -344,7 +362,10 @@ where $s_{ij}$ denotes the <u>score obtained in the last layer of the CNN model 
 ![](/assets/seminars/unsupervised-label-noise-modeling-and-loss-correction-icml-2019/18.png)
 
 
-[bookmark](https://arxiv.org/pdf/1603.05027.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1603.05027.pdf)
 
 
-[bookmark](https://hoya012.github.io/blog/deeplearning-classification-guidebook-2/)
+
+
+[📄 자료 링크 ↗](https://hoya012.github.io/blog/deeplearning-classification-guidebook-2/)

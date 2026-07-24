@@ -10,7 +10,9 @@ keywords: Change Detection
 ## **QuantTree: Histograms for Change Detection in Multivariate Data Streams**
 
 
-[bookmark](https://proceedings.mlr.press/v80/boracchi18a.html)
+
+[📄 자료 링크 ↗](https://proceedings.mlr.press/v80/boracchi18a.html)
+
 
 
 ## Abstract

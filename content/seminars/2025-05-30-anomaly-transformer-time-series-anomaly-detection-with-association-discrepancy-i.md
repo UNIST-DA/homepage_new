@@ -25,7 +25,9 @@ Unsupervised detection of anomaly points in time series is a challenging problem
 ## Link
 
 
-[bookmark](https://arxiv.org/pdf/2110.02642)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2110.02642)
+
 
 
 [https://arxiv.org/pdf/2110.02642](https://arxiv.org/pdf/2110.02642)

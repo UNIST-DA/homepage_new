@@ -28,7 +28,9 @@ Anomaly detection is an important field that aims to identify unexpected pattern
 ## Link
 
 
-[bookmark](https://arxiv.org/abs/2306.15489)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/2306.15489)
+
 
 
 # Paper Review

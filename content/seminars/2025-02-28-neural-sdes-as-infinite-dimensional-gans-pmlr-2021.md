@@ -28,7 +28,9 @@ Stochastic differential equations (SDEs) are a staple of mathematical modelling 
 ## Link
 
 
-[bookmark](https://proceedings.mlr.press/v139/kidger21b.html)
+
+[📄 자료 링크 ↗](https://proceedings.mlr.press/v139/kidger21b.html)
+
 
 
 ### GANs (D: Discriminator, G: Generator)

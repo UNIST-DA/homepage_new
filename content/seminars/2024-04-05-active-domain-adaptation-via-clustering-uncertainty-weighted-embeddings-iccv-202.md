@@ -13,7 +13,9 @@ keywords: Domain adaptation, Active learning
 ### Link
 
 
-[bookmark](https://openaccess.thecvf.com/content/ICCV2021/html/Prabhu_Active_Domain_Adaptation_via_Clustering_Uncertainty-Weighted_Embeddings_ICCV_2021_paper.html)
+
+[📄 자료 링크 ↗](https://openaccess.thecvf.com/content/ICCV2021/html/Prabhu_Active_Domain_Adaptation_via_Clustering_Uncertainty-Weighted_Embeddings_ICCV_2021_paper.html)
+
 
 
 ## Abstract

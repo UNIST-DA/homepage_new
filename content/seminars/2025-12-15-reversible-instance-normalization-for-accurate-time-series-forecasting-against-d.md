@@ -26,7 +26,9 @@ Statistical properties such as mean and variance often change over time in time 
 ## Link
 
 
-[bookmark](https://openreview.net/pdf?id=cGDAkQo1C0p)
+
+[📄 자료 링크 ↗](https://openreview.net/pdf?id=cGDAkQo1C0p)
+
 
 
 # Paper Review

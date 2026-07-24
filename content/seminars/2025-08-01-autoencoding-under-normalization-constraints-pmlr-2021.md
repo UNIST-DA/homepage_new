@@ -27,7 +27,9 @@ Likelihood is a standard estimate for outlier detection. The specific role of th
 ## Link
 
 
-[bookmark](https://proceedings.mlr.press/v139/yoon21c.html)
+
+[📄 자료 링크 ↗](https://proceedings.mlr.press/v139/yoon21c.html)
+
 
 
 # Preliminary
@@ -398,7 +400,9 @@ $$
 ### Demo
 
 
-[embed](https://swyoon.github.io/outlier-reconstruction/)
+
+[📄 자료 ↗](https://swyoon.github.io/outlier-reconstruction/)
+
 
 
 # Comments

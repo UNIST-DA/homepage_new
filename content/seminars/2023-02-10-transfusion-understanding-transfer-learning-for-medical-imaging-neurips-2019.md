@@ -23,7 +23,9 @@ also explore feature independent benefits of transfer arising from weight scalin
 ## Link
 
 
-[bookmark](https://proceedings.neurips.cc/paper/2019/hash/eb1e78328c46506b46a4ac4a1e378b91-Abstract.html)
+
+[📄 자료 링크 ↗](https://proceedings.neurips.cc/paper/2019/hash/eb1e78328c46506b46a4ac4a1e378b91-Abstract.html)
+
 
 
 # Review
@@ -172,7 +174,9 @@ transfer learning and training from random initialization result in very similar
 
 - **(Singular Vector) Canonical Correlation Analysis**
 
-    [bookmark](https://github.com/google/svcca/blob/master/tutorials/002_CCA_for_Convolutional_Layers.ipynb)
+    
+[📄 자료 링크 ↗](https://github.com/google/svcca/blob/master/tutorials/002_CCA_for_Convolutional_Layers.ipynb)
+    
 
 - Rather than working directly with the model parameters or neurons, CCA works with neuron activation vectors — the ordered collection of outputs of the neuron on a sequence of inputs
 

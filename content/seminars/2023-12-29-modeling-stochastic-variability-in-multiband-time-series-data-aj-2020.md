@@ -28,7 +28,9 @@ In preparation for the era of time-domain astronomy with upcoming large-scale su
 ## Link
 
 
-[bookmark](https://iopscience.iop.org/article/10.3847/1538-3881/abc1e2/meta)
+
+[📄 자료 링크 ↗](https://iopscience.iop.org/article/10.3847/1538-3881/abc1e2/meta)
+
 
 
 # Paper Review

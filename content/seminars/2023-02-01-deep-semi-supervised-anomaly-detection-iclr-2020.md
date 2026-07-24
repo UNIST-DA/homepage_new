@@ -25,7 +25,9 @@ Deep approaches to anomaly detection have recently shown promising results over 
 ## Link
 
 
-[bookmark](https://arxiv.org/abs/1906.02694)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1906.02694)
+
 
 - Introduce Deep SAD, a generalization of the unsupervised Deep SVDD method (Ruff et al., 2018) to the semi-supervised AD setting.
 - Present an information-theoretic framework for deep AD, which can serve as an interpretation of our Deep SAD method and similar approaches.

@@ -21,7 +21,9 @@ Handling out-of-distribution samples is a long-lasting challenge for deep visual
 ## Link
 
 
-[bookmark](https://arxiv.org/abs/2305.13046)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/2305.13046)
+
 
 
 # Paper Review

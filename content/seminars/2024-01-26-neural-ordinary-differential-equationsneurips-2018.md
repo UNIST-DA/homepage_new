@@ -28,10 +28,14 @@ We introduce a new family of deep neural network models. Instead of specifying a
 ## Link
 
 
-[bookmark](https://proceedings.neurips.cc/paper_files/paper/2018/file/69386f6bb1dfed68692a24c8686939b9-Paper.pdf)
+
+[📄 자료 링크 ↗](https://proceedings.neurips.cc/paper_files/paper/2018/file/69386f6bb1dfed68692a24c8686939b9-Paper.pdf)
 
 
-[69386f6bb1dfed68692a24c8686939b9-Paper.pdf](https://proceedings.neurips.cc/paper_files/paper/2018/file/69386f6bb1dfed68692a24c8686939b9-Paper.pdf)
+
+
+[📄 PDF 자료 ↗](https://proceedings.neurips.cc/paper_files/paper/2018/file/69386f6bb1dfed68692a24c8686939b9-Paper.pdf)
+
 
 
 # Paper Review

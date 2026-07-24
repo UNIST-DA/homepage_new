@@ -35,7 +35,9 @@ Deep learning methods nowadays rely on massive data, resulting in substantial co
 ## Link
 
 
-[bookmark](https://openreview.net/forum?id=7D5EECbOaf9)
+
+[📄 자료 링크 ↗](https://openreview.net/forum?id=7D5EECbOaf9)
+
 
 
 # Paper Review
@@ -278,7 +280,9 @@ optimal representations는 유익함 (sufficiency) 과 간결함 (minimality) �
 **Definition 1** (Sufficient and minimal representations) We say that a representation $\mathrm{z}$ of $\mathrm{x}$ is sufficient for $y$ if $y \!\perp\!\!\!\perp  \mathbf{x} \mid \mathbf{z}$ or equivalently if $I(\mathbf{z} ; y)=I(\mathbf{x} ; y)$; it is minimal when $I(\mathbf{x} ; \mathbf{z})$ is smallest among sufficient representations.
 
 
-[bookmark](https://arxiv.org/abs/1801.04062)
+
+[📄 자료 링크 ↗](https://arxiv.org/abs/1801.04062)
+
 
 
 We use a mutual information estimator to estimate $I(\mathbf{z} ; y),I(\mathbf{x} ; y),$ and $I(\mathbf{x} ; \mathbf{z})$. The technical details of the estimator are provided in Appendix E. Experiments are conducted on CIFAR100. Each estimation is repeated 20 times for reported mean.

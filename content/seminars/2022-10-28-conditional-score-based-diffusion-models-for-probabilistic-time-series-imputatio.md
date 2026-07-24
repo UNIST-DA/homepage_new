@@ -25,7 +25,9 @@ The imputation of missing values in time series has many applications in healthc
 Tashiro, Y., Song, J., Song, Y., & Ermon, S. (2021). CSDI: Conditional score-based diffusion models for probabilistic time series imputation. Advances in Neural Information Processing Systems, 34, 24804-24816.
 
 
-[bookmark](https://proceedings.neurips.cc/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf)
+
+[📄 자료 링크 ↗](https://proceedings.neurips.cc/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf)
+
 
 
 # Motivation
@@ -34,28 +36,38 @@ Tashiro, Y., Song, J., Song, Y., & Ermon, S. (2021). CSDI: Conditional score-bas
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/0.png)
 
 
-[link_preview](https://github.com/CompVis/stable-diffusion)
+
+[📄 링크 ↗](https://github.com/CompVis/stable-diffusion)
+
 
 
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/1.png)
 
 
-[bookmark](https://huggingface.co/spaces/stabilityai/stable-diffusion)
+
+[📄 자료 링크 ↗](https://huggingface.co/spaces/stabilityai/stable-diffusion)
+
 
 
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/2.png)
 
 
-[bookmark](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+
+[📄 자료 링크 ↗](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 
 
-[bookmark](https://www.vanillabug.com/posts/sde/#tldr)
+
+
+[📄 자료 링크 ↗](https://www.vanillabug.com/posts/sde/#tldr)
+
 
 
 **CVPR 2022 Tutorial:** Denoising Diffusion-based Generative Modeling: Foundations and Applications
 
 
-[bookmark](https://cvpr2022-tutorial-diffusion-models.github.io/)
+
+[📄 자료 링크 ↗](https://cvpr2022-tutorial-diffusion-models.github.io/)
+
 
 
 # Diffusion model
@@ -64,7 +76,9 @@ Tashiro, Y., Song, J., Song, Y., & Ermon, S. (2021). CSDI: Conditional score-bas
 Yang, L., Zhang, Z., Song, Y., Hong, S., Xu, R., Zhao, Y., ... & Yang, M. H. (2022). Diffusion models: A comprehensive survey of methods and applications. _arXiv preprint arXiv:2209.00796_
 
 
-[bookmark](https://arxiv.org/pdf/2209.00796.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2209.00796.pdf)
+
 
 
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/3.png)
@@ -273,10 +287,14 @@ The motivation of this strategy comes from structured missing patterns in the re
 ![](/assets/seminars/conditional-score-based-diffusion-models-for-probabilistic-time-series-imputatio/13.png)
 
 
-[bookmark](https://www.sciencedirect.com/science/article/pii/S2666546821000124)
+
+[📄 자료 링크 ↗](https://www.sciencedirect.com/science/article/pii/S2666546821000124)
 
 
-[bookmark](https://www.lokad.com/continuous-ranked-probability-score)
+
+
+[📄 자료 링크 ↗](https://www.lokad.com/continuous-ranked-probability-score)
+
 
 
 A generalisation of Ranked Probability Score (RPS) is the Continuous Rank Probability Score (CRPSS) where the thresholds are continuous rather than discrete (see Nurmi, 2003; Jollife and Stephenson, 2003; Wilks, 2006). The Continuous Ranked Probability Score (CRPS) is a measure of how good forecasts are in matching observed outcomes.   Where:
@@ -287,7 +305,9 @@ A generalisation of Ranked Probability Score (RPS) is the Continuous Rank Probab
 CRPS is calculated by comparing the Cumulative Distribution Functions (CDF) for the forecast against a reference dataset (observations, or analyses, or climatology) over a given perio
 
 
-[bookmark](https://confluence.ecmwf.int/display/FUG/12.B+Statistical+Concepts+-+Probabilistic+Data#id-12.BStatisticalConceptsProbabilisticData-ContinuousRankedProbabilityScores(CRPS))
+
+[📄 자료 링크 ↗](https://confluence.ecmwf.int/display/FUG/12.B+Statistical+Concepts+-+Probabilistic+Data#id-12.BStatisticalConceptsProbabilisticData-ContinuousRankedProbabilityScores(CRPS))
+
 
 
 ### Results: time series imputation

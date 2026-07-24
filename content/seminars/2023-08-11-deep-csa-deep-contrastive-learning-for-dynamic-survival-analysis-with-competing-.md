@@ -29,7 +29,9 @@ Summary
 ## Link
 
 
-[bookmark](https://ieeexplore.ieee.org/document/9756287)
+
+[📄 자료 링크 ↗](https://ieeexplore.ieee.org/document/9756287)
+
 
 
 # Paper Review

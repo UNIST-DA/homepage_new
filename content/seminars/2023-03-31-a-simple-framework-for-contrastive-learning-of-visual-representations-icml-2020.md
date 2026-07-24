@@ -25,7 +25,9 @@ This paper presents SimCLR: a simple framework for contrastive learning of visua
 ## Link
 
 
-[bookmark](https://arxiv.org/pdf/2002.05709.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/2002.05709.pdf)
+
 
 
 # Preliminaries 
@@ -53,7 +55,9 @@ Pretext tasks are pre-designed tasks for networks to solve, and visual features 
 Downstream tasks are computer vision applications that are used to evaluate the quality of features learned by self-supervised learning. These applications can greatly benefit from the pretrained models when training data are scarce.
 
 
-[bookmark](https://arxiv.org/pdf/1902.06162.pdf)
+
+[📄 자료 링크 ↗](https://arxiv.org/pdf/1902.06162.pdf)
+
 
 
   

@@ -10,10 +10,14 @@ keywords: DeepLearning, Domain Generalization, Medical Imaging
 ## Link
 
 
-[bookmark](https://proceedings.nips.cc/paper_files/paper/2020/hash/201d7288b4c18a679e48b31c72c30ded-Abstract.html)
+
+[📄 자료 링크 ↗](https://proceedings.nips.cc/paper_files/paper/2020/hash/201d7288b4c18a679e48b31c72c30ded-Abstract.html)
 
 
-[bookmark](https://colab.research.google.com/drive/1ziB6fdMytHw45cg1bQaLqkzI9UzrWGFB?usp=sharing)
+
+
+[📄 자료 링크 ↗](https://colab.research.google.com/drive/1ziB6fdMytHw45cg1bQaLqkzI9UzrWGFB?usp=sharing)
+
 
 
 ## Abstract: 

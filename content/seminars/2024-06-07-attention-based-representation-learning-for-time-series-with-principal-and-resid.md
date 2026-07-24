@@ -26,7 +26,9 @@ The encoder-decoder network is one of the most common deep learning models for t
 ## Link
 
 
-[bookmark](https://ieeexplore.ieee.org/document/9926721)
+
+[📄 자료 링크 ↗](https://ieeexplore.ieee.org/document/9926721)
+
 
 
 # Paper Review
