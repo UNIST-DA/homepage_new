@@ -139,20 +139,98 @@ function selftest() {
   console.log("✓ selftest passed");
 }
 
-// ---------- image download (Notion file URLs expire → localize) ----------
+// ---------- asset download (Notion image/file URLs expire → localize) ----------
 
-async function downloadImage(url, slug, idx) {
+function pickExt(url, ct, def) {
+  let u = "";
+  try {
+    u = (new URL(url).pathname.split(".").pop() || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  } catch {
+    /* ignore */
+  }
+  if (u && u.length >= 2 && u.length <= 4) return u;
+  const c = (ct.split("/")[1] || "").split(";")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (c && c.length >= 2 && c.length <= 5) return c;
+  return def;
+}
+
+// Download a Notion-hosted image or attachment into public/assets/seminars/<slug>/
+// so it stays viewable after the (expiring) Notion URL dies. Returns a site path.
+async function downloadAsset(url, slug, name, defaultExt = "bin") {
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`image fetch ${res.status} for ${url}`);
-  const ct = res.headers.get("content-type") || "";
-  const extFromCt = ct.split("/")[1]?.split(";")[0];
-  const extFromUrl = new URL(url).pathname.split(".").pop();
-  const ext = (extFromCt || extFromUrl || "png").replace(/[^a-z0-9]/gi, "").slice(0, 4) || "png";
+  if (!res.ok) throw new Error(`fetch ${res.status} for ${url}`);
+  const ext = pickExt(url, res.headers.get("content-type") || "", defaultExt);
   const dir = path.join(IMG_DIR, slug);
   fs.mkdirSync(dir, { recursive: true });
-  const file = `${idx}.${ext}`;
+  const file = `${name}.${ext}`;
   fs.writeFileSync(path.join(dir, file), Buffer.from(await res.arrayBuffer()));
   return `${IMG_URL_BASE}/${slug}/${file}`;
+}
+
+// ---------- GitHub Release asset hosting (keeps large PDFs out of the site) ----------
+// Notion-uploaded slides/PDFs are mirrored to a single "seminar-assets" release
+// so they stay viewable (Notion URLs expire) WITHOUT bloating the Pages site or
+// the repo tree. Needs GITHUB_TOKEN (contents:write) + GITHUB_REPOSITORY (both
+// provided automatically in Actions). Falls back to a plain note when absent.
+
+const GH = {
+  repo: process.env.GITHUB_REPOSITORY || "",
+  token: process.env.GH_TOKEN || process.env.GITHUB_TOKEN || "",
+  tag: "seminar-assets",
+  _release: null,
+  _seq: 0,
+};
+const ghEnabled = () => Boolean(GH.repo && GH.token);
+
+async function ghApi(url, opts = {}) {
+  return fetch(url, {
+    ...opts,
+    headers: {
+      Authorization: `Bearer ${GH.token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(opts.headers || {}),
+    },
+  });
+}
+
+async function ensureRelease() {
+  if (GH._release) return GH._release;
+  let res = await ghApi(`https://api.github.com/repos/${GH.repo}/releases/tags/${GH.tag}`);
+  if (res.status === 404) {
+    res = await ghApi(`https://api.github.com/repos/${GH.repo}/releases`, {
+      method: "POST",
+      body: JSON.stringify({
+        tag_name: GH.tag,
+        name: "Seminar assets",
+        body: "Auto-uploaded seminar attachments (slides / PDFs). Managed by scripts/sync-seminars.mjs.",
+        prerelease: true,
+      }),
+    });
+  }
+  if (!res.ok) throw new Error(`release ${res.status}: ${await res.text()}`);
+  GH._release = await res.json();
+  GH._release.assets = GH._release.assets || [];
+  return GH._release;
+}
+
+// Upload a buffer as a release asset (replacing any same-named one). Returns its
+// public download URL.
+async function uploadReleaseAsset(name, buffer, contentType) {
+  const rel = await ensureRelease();
+  const existing = rel.assets.find((a) => a.name === name);
+  if (existing) {
+    await ghApi(`https://api.github.com/repos/${GH.repo}/releases/assets/${existing.id}`, { method: "DELETE" });
+    rel.assets = rel.assets.filter((a) => a.name !== name);
+  }
+  const up = await ghApi(
+    `https://uploads.github.com/repos/${GH.repo}/releases/${rel.id}/assets?name=${encodeURIComponent(name)}`,
+    { method: "POST", headers: { "Content-Type": contentType || "application/octet-stream" }, body: buffer },
+  );
+  if (!up.ok) throw new Error(`asset upload ${up.status}: ${await up.text()}`);
+  const asset = await up.json();
+  rel.assets.push(asset);
+  return asset.browser_download_url;
 }
 
 // ---------- sync ----------
@@ -171,23 +249,20 @@ async function sync() {
   const notion = new Client({ auth: token });
   const n2m = new NotionToMarkdown({ notionClient: notion, config: { parseChildPages: false } });
 
-  // PDF / bookmark / embed / file blocks → a clean "material" link instead of
-  // a raw `[bookmark](url)` or a broken embed. Notion-hosted file URLs expire,
-  // so those become a plain note (the "내부 노션에서 보기" link covers the full page).
+  // External link blocks (bookmark/embed/link_preview) → a clean "📄 …" link.
+  // These carry stable external URLs (arxiv, etc.). pdf/file blocks are handled
+  // per-page below because Notion-hosted files expire and must be downloaded.
   const isEphemeral = (u) => /amazonaws\.com|notion-static|secure\.notion|X-Amz-/i.test(u);
   const linkBlock = (label) => (block) => {
     const b = block[block.type] || {};
     const url = b.url || b.external?.url || b.file?.url || "";
     const cap = (b.caption || []).map((c) => c.plain_text).join("").trim();
     if (!url) return "";
-    if (isEphemeral(url)) return `\n📄 ${cap || label} (노션 원문 참고)\n`;
     return `\n[📄 ${cap || label} ↗](${url})\n`;
   };
   n2m.setCustomTransformer("bookmark", linkBlock("자료 링크"));
   n2m.setCustomTransformer("embed", linkBlock("자료"));
-  n2m.setCustomTransformer("pdf", linkBlock("PDF 자료"));
   n2m.setCustomTransformer("link_preview", linkBlock("링크"));
-  n2m.setCustomTransformer("file", linkBlock("첨부파일"));
 
   // fetch all published rows
   const pages = [];
@@ -207,6 +282,9 @@ async function sync() {
     process.exit(1);
   }
 
+  // clean the local image dir so removed seminars don't leave orphan files
+  fs.rmSync(IMG_DIR, { recursive: true, force: true });
+
   // build files in memory first
   const files = new Map(); // filename -> content
   const usedSlugs = new Set();
@@ -224,7 +302,7 @@ async function sync() {
     usedSlugs.add(slug);
     const filename = `${date || "0000-00-00"}-${slug}.md`;
 
-    // page body → markdown, with images downloaded to /public/assets/seminars/<slug>/
+    // Images → downloaded into /public/assets/seminars/<slug>/ (small; render inline).
     let imgIdx = 0;
     n2m.setCustomTransformer("image", async (block) => {
       const img = block.image;
@@ -232,13 +310,41 @@ async function sync() {
       if (!src) return false;
       const alt = (img.caption || []).map((c) => c.plain_text).join("").trim();
       try {
-        const local = await downloadImage(src, slug, imgIdx++);
+        const local = await downloadAsset(src, slug, String(imgIdx++), "png");
         return `![${alt}](${local})`;
       } catch (e) {
         console.warn(`  ! image skipped (${e.message})`);
         return `![${alt}]()`;
       }
     });
+
+    // PDF / file attachments → external URLs link directly; Notion-uploaded files
+    // (expiring) are mirrored to the GitHub Release so they stay viewable without
+    // bloating the site. Falls back to a plain note if the upload can't happen.
+    const fileBlock = (label) => async (block) => {
+      const b = block[block.type] || {};
+      const url = b.url || b.external?.url || b.file?.url || "";
+      const cap = (b.caption || []).map((c) => c.plain_text).join("").trim();
+      if (!url) return "";
+      if (!isEphemeral(url)) return `\n[📄 ${cap || label} ↗](${url})\n`;
+      if (!ghEnabled()) return `\n📄 ${cap || label} (노션 원문 참고)\n`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`fetch ${res.status}`);
+        const buf = Buffer.from(await res.arrayBuffer());
+        const ct = res.headers.get("content-type") || "application/pdf";
+        const ext = pickExt(url, ct, "pdf");
+        const asciiSlug = slug.replace(/[^a-z0-9-]/g, "").slice(0, 40) || "file";
+        const name = `${date || "0000-00-00"}-${asciiSlug}-a${GH._seq++}.${ext}`;
+        const link = await uploadReleaseAsset(name, buf, ct);
+        return `\n[📄 ${cap || label} ↗](${link})\n`;
+      } catch (e) {
+        console.warn(`  ! attachment upload failed (${e.message})`);
+        return `\n📄 ${cap || label} (노션 원문 참고)\n`;
+      }
+    };
+    n2m.setCustomTransformer("pdf", fileBlock("PDF 자료"));
+    n2m.setCustomTransformer("file", fileBlock("첨부파일"));
 
     let body = "";
     try {
