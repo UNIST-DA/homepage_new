@@ -1,9 +1,0 @@
----
-date: 2025-08-13
-title: Neural Network Control Chart for Autocorrelated Multivariate Data (Quality Engineering)
-category: Paper Review
-presenter: 유정우
-url: https://www.notion.so/250046396f7e809397c2f33d41a3e440
-keywords: QualityMonitoring, ControlChart
----
-
