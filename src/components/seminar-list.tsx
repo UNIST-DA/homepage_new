@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import type { SeminarItem } from "@/data/seminars";
+import { SeminarNotes } from "./seminar-notes";
 
 type Filter = "all" | "Lab Seminar" | "Paper Review";
 const TABS: { key: Filter; label: string }[] = [
@@ -148,8 +149,8 @@ export function SeminarList({ seminars }: { seminars: SeminarItem[] }) {
               )}
             </div>
             <div className="sem-modal__notes">
-              {open.notes ? (
-                <p className="sem-notes__body">{open.notes}</p>
+              {open.notes?.trim() ? (
+                <SeminarNotes md={open.notes} />
               ) : (
                 <p className="sem-notes__empty">아직 정리된 내용이 없습니다.</p>
               )}

@@ -6,6 +6,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Commits pushed by the seminar-sync Action use GITHUB_TOKEN, which by design
+  # does NOT trigger `push` above. Chain off the sync workflow so new seminars
+  # deploy automatically.
+  workflow_run:
+    workflows: ["Sync seminars from Notion"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -19,6 +25,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # For sync-triggered runs, only deploy if the sync actually succeeded.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -171,6 +171,24 @@ async function sync() {
   const notion = new Client({ auth: token });
   const n2m = new NotionToMarkdown({ notionClient: notion, config: { parseChildPages: false } });
 
+  // PDF / bookmark / embed / file blocks → a clean "material" link instead of
+  // a raw `[bookmark](url)` or a broken embed. Notion-hosted file URLs expire,
+  // so those become a plain note (the "내부 노션에서 보기" link covers the full page).
+  const isEphemeral = (u) => /amazonaws\.com|notion-static|secure\.notion|X-Amz-/i.test(u);
+  const linkBlock = (label) => (block) => {
+    const b = block[block.type] || {};
+    const url = b.url || b.external?.url || b.file?.url || "";
+    const cap = (b.caption || []).map((c) => c.plain_text).join("").trim();
+    if (!url) return "";
+    if (isEphemeral(url)) return `\n📄 ${cap || label} (노션 원문 참고)\n`;
+    return `\n[📄 ${cap || label} ↗](${url})\n`;
+  };
+  n2m.setCustomTransformer("bookmark", linkBlock("자료 링크"));
+  n2m.setCustomTransformer("embed", linkBlock("자료"));
+  n2m.setCustomTransformer("pdf", linkBlock("PDF 자료"));
+  n2m.setCustomTransformer("link_preview", linkBlock("링크"));
+  n2m.setCustomTransformer("file", linkBlock("첨부파일"));
+
   // fetch all published rows
   const pages = [];
   let cursor;
